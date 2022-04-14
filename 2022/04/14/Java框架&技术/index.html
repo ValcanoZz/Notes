@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>java框架&amp;技术 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ManvenMaven 是专门用于管理和构建java项目的工具，它的主要功能有：  提供了一套标准化的项目结构；  提供了一套标准化的构建流程 (编译，测试，打包，发布…)；  提供了一套依赖管理机制（指jar包，插件）；   依赖管理 jar包查找顺序：本地仓库——远程仓库——中央仓库 远程仓库（私服）：一般由公司团队搭建的私有仓库。  使用坐标导入jar包：  在 pom.xml 中编写 &amp;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java框架&amp;技术">
+<meta property="og:url" content="http://example.com/2022/04/14/Java%E6%A1%86%E6%9E%B6&%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ManvenMaven 是专门用于管理和构建java项目的工具，它的主要功能有：  提供了一套标准化的项目结构；  提供了一套标准化的构建流程 (编译，测试，打包，发布…)；  提供了一套依赖管理机制（指jar包，插件）；   依赖管理 jar包查找顺序：本地仓库——远程仓库——中央仓库 远程仓库（私服）：一般由公司团队搭建的私有仓库。  使用坐标导入jar包：  在 pom.xml 中编写 &amp;l">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191707938.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191707939.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191707940.png">
+<meta property="article:published_time" content="2022-04-14T06:55:35.213Z">
+<meta property="article:modified_time" content="2022-04-14T01:31:32.124Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191707938.png">
+  
+    <link rel="alternate" href="/Notes/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/Notes/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/Notes/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/Notes/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Notes/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Notes/">Home</a>
+        
+          <a class="main-nav-link" href="/Notes/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/Notes/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java框架&amp;技术" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Notes/2022/04/14/Java%E6%A1%86%E6%9E%B6&%E6%8A%80%E6%9C%AF/" class="article-date">
+  <time class="dt-published" datetime="2022-04-14T06:55:35.213Z" itemprop="datePublished">2022-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      java框架&amp;技术
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Manven"><a href="#Manven" class="headerlink" title="Manven"></a>Manven</h2><p>Maven 是专门用于<strong>管理和构建java项目的工具</strong>，它的主要功能有：</p>
+<ul>
+<li><p>提供了一套标准化的项目结构；</p>
+</li>
+<li><p>提供了一套标准化的构建流程 (编译，测试，打包，发布…)；</p>
+</li>
+<li><p>提供了一套依赖管理机制（指jar包，插件）；</p>
+</li>
+</ul>
+<h4 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h4><blockquote>
+<p>jar包查找顺序：本地仓库——远程仓库——中央仓库</p>
+<p>远程仓库（私服）：一般由公司团队搭建的私有仓库。</p>
+</blockquote>
+<p>使用坐标导入jar包：</p>
+<ol>
+<li>在 pom.xml 中编写 &lt; dependencies &gt; 标签；</li>
+<li>在&lt; dependencies &gt;标签中使用&lt; dependency &gt;引入坐标；</li>
+<li>定义坐标的 groupld, artifactld, version；</li>
+</ol>
+<p><u>资源直接网上搜索：资源名 maven，如 mysql maven，然后会出现maven repository的网页，点进去复制坐标即可。</u></p>
+<blockquote>
+<p>Maven坐标：是资源的唯一标识，使用坐标来定义项目或引入项目中需要的依赖。</p>
+<p>坐标组成：</p>
+<ul>
+<li>groupld：定义当前Maven项目隶属组织的名称（通常是域名反写，如：com.itheima）</li>
+<li>artifactld：定义当前Maven项目名称（通常是模块名称，如：order-service，goods-service）</li>
+<li>version：定义当前项目的版本号</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.46<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="依赖范围"><a href="#依赖范围" class="headerlink" title="依赖范围"></a>依赖范围</h4><p>通过设置坐标的依赖范围(scope),可以设置对应ja包的作用范围：编译环境、测试环境、运行环境</p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191707938.png" alt="image-20220224164841772"></p>
+<table>
+<thead>
+<tr>
+<th>依赖范围</th>
+<th>编译</th>
+<th>测试</th>
+<th>运行</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>compile</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>logback</td>
+</tr>
+<tr>
+<td>test</td>
+<td>-</td>
+<td>Y</td>
+<td>-</td>
+<td>Junit</td>
+</tr>
+<tr>
+<td>provided</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td>servlet-api</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+<td>jdbc驱动</td>
+</tr>
+<tr>
+<td>system</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td>存储在本地的jar包</td>
+</tr>
+<tr>
+<td>import</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Spring5"><a href="#Spring5" class="headerlink" title="Spring5"></a>Spring5</h2><p>Spring就是一个轻量级的控制反转（IOC）和面向切面编程（AOP）的框架</p>
+<blockquote>
+<p><strong>控制反转是一种通过描述（XML或注解）并通过第三方去生产或获取特定对象的方式。</strong></p>
+</blockquote>
+<blockquote>
+<p>拓展：</p>
+<ul>
+<li>SpringBoot<ul>
+<li>一个快速开发的脚手架</li>
+<li>基于SpringBoot可以快速的开发单个微服务</li>
+<li>约定大于配置</li>
+</ul>
+</li>
+<li>SpringCloud<ul>
+<li>基于SpringBoot实现的</li>
+</ul>
+</li>
+</ul>
+<p>多数公司在使用SpringBoot进行快速开发，学习SpringBoot的前提，需要完全掌握Spring及SpringMVC，承上启下！</p>
+<p><strong>spring弊端：发展了太久之后，违背了原来的理念！配置十分繁琐，容易出错，人称“配置地狱”，所以有了springboot，其更简单，更稳定健壮，功能更丰富。</strong></p>
+</blockquote>
+<h2 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h2><p>SpringMVC就是一个Spring内置的MVC框架。</p>
+<p><strong>SpringMVC底层就是Servlet，SpringMVC就是对Servlet进行深层次的封装。</strong></p>
+<blockquote>
+<p>MVC框架，它解决WEB开发中常见的问题(参数接收、文件上传、表单验证、国际化等等)，而且使用简单，与Spring无缝集成。</p>
+</blockquote>
+<hr>
+<hr>
+<h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p> MyBatis是一款优秀的持久层框架，用于简化 JDBC开发。</p>
+<blockquote>
+<p>JavaEE三层框架：</p>
+<ul>
+<li>表现层：页面展示</li>
+<li>业务层：逻辑处理</li>
+<li>持久层：数据持久化（将数据保存到数据库）</li>
+</ul>
+<p>框架：相当于一个半成品软件，是一套可重用的，通用的、软件基础代码模型。</p>
+<p>在框架的基础之上构建软件编写更加高效、规范、通用、可扩展。</p>
+</blockquote>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191707939.png" alt="image-20220224170810620"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191707940.png" alt="image-20220224171023073"></p>
+<h2 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h2><h2 id="SSM框架整合案例"><a href="#SSM框架整合案例" class="headerlink" title="SSM框架整合案例"></a>SSM框架整合案例</h2><p>ssm：SpringMVC+Spring+MyBatis</p>
+<p>案例：Maven+SpringMVC+Spring+MyBatis+Bootstrap的组合</p>
+<h2 id="Redis6"><a href="#Redis6" class="headerlink" title="Redis6"></a>Redis6</h2><p>非关系型数据库，即缓存数据库，读取速度快，但保存时间有限。</p>
+<h2 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h2><p>Zookeeper: 是一个分布式的、开源的程序协调服务，是 hadoop(分布式计算) 项目下的一个子项目。</p>
+<p>用于<strong>分布式中一致性处理的框架</strong>。</p>
+<h2 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h2><p>Dubbo是阿里巴巴开源的基于 Java 的高性能 RPC（一种远程调用） 分布式服务框架。</p>
+<p>其内部使用了 Netty、Zookeeper，保证了高性能高可用性。</p>
+<h2 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h2><p>消息中间件是基于队列与消息传递技术，在网络环境中为应用系统提供同步或异步、可靠的消息传输的支撑性软件系统。</p>
+<p>ActiveMQ</p>
+<p>中小型公司，万级，非常成熟，功能强大，在早些年业内大量的公司以及项目中都有应用，主要是基于解耦和异步来用的，较少在大规模吞吐的场景中使用。</p>
+<p>RabbitMQ</p>
+<p>万级，延时很低，是erlang语言本身带来的问题。很难读源码，很难定制和掌控。</p>
+<p>RocketMQ</p>
+<p>大型公司，十万级，阿里，接口简单易用，可以做到大规模吞吐，性能也非常好，分布式扩展也很方便，社区维护还可以，可靠性和可用性都是ok的，还可以支撑大规模的topic数量，支持复杂MQ业务场景。</p>
+<h2 id="SpringBoot2"><a href="#SpringBoot2" class="headerlink" title="SpringBoot2"></a>SpringBoot2</h2><h2 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/14/Java%E6%A1%86%E6%9E%B6&%E6%8A%80%E6%9C%AF/" data-id="cl1yneflw0002swtueuxi1qrm" data-title="java框架&amp;技术" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Notes/2022/04/14/Java%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          java
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Notes/2022/04/14/javaWeb/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java Web</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Notes/archives/2022/04/">April 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/">面试相关</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Notes/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Notes/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/Notes/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/Notes/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/Notes/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

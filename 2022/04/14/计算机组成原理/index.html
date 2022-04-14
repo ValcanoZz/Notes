@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>计算机组成原理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、计算机组成概论硬件组成早期冯诺依曼机 由五大部件组成； 指令和数据以同等地位存储于存储器，可按地址寻访； 指令和数据用二进制表示； 指令由操作码和地址码组成； 提前把程序放到存储器中； 以运算器为中心；（输入&#x2F;输出设备与存储器之间的数据传送通过运算器完成）    在计算机系统中，软件和硬件在逻辑上是等效的。例如：对于乘法运算，可以设计一个专门的硬件电路实现乘法运算，也可以用软件的方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理">
+<meta property="og:url" content="http://example.com/2022/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、计算机组成概论硬件组成早期冯诺依曼机 由五大部件组成； 指令和数据以同等地位存储于存储器，可按地址寻访； 指令和数据用二进制表示； 指令由操作码和地址码组成； 提前把程序放到存储器中； 以运算器为中心；（输入&#x2F;输出设备与存储器之间的数据传送通过运算器完成）    在计算机系统中，软件和硬件在逻辑上是等效的。例如：对于乘法运算，可以设计一个专门的硬件电路实现乘法运算，也可以用软件的方式">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191722854.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191722753.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733507.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733007.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733184.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733454.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733238.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733031.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734022.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734970.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734242.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734504.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734382.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734443.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734164.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734109.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734958.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734222.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734150.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734904.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734438.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734790.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734286.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734956.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734873.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734424.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191735427.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191735150.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736943.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736326.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736434.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736419.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736449.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736406.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736350.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736233.png">
+<meta property="og:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736060.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118192659788.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118193424237.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118193444434.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118193453852.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118193510093.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118194222167.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118194232160.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118194241590.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211118194251001.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184018313.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184237269.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184326877.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184331950.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184336345.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184152834.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184617835.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184633939.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184649625.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184653982.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184658348.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184706787.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184713453.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184718342.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184732882.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120184739339.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220111095619918.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220111095547417.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20211120185413723.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220110112634686.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220110113624661.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220110113930006.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220110113939759.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220110115750687.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220111085521860.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220110120657545.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220110120837771.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220110120848340.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220111090254388.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220125162850050.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220111202414358.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220111202549519.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220111202701385.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220104112886.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220104430559.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220104442016.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220105619061.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220113352077.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220113548916.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220155959250.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220152454394.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220152807606.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220153153326.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220153412326.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220154622584.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220155133573.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220155730564.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220161957124.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220162329585.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220162516927.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220162603652.png">
+<meta property="og:image" content="d:/Note/Typora_picture/image-20220220164600629.png">
+<meta property="article:published_time" content="2022-04-14T06:55:35.282Z">
+<meta property="article:modified_time" content="2022-04-14T01:29:34.736Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191722854.png">
+  
+    <link rel="alternate" href="/Notes/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/Notes/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/Notes/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/Notes/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Notes/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Notes/">Home</a>
+        
+          <a class="main-nav-link" href="/Notes/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/Notes/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-计算机组成原理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Notes/2022/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2022-04-14T06:55:35.282Z" itemprop="datePublished">2022-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      计算机组成原理
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、计算机组成概论"><a href="#一、计算机组成概论" class="headerlink" title="一、计算机组成概论"></a>一、计算机组成概论</h1><h3 id="硬件组成"><a href="#硬件组成" class="headerlink" title="硬件组成"></a>硬件组成</h3><h4 id="早期冯诺依曼机"><a href="#早期冯诺依曼机" class="headerlink" title="早期冯诺依曼机"></a>早期冯诺依曼机</h4><ul>
+<li>由五大部件组成；</li>
+<li>指令和数据以同等地位存储于存储器，可按地址寻访；</li>
+<li>指令和数据用二进制表示；</li>
+<li>指令由操作码和地址码组成；</li>
+<li>提前把程序放到存储器中；</li>
+<li>以运算器为中心；（输入&#x2F;输出设备与存储器之间的数据传送通过运算器完成）</li>
+</ul>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191722854.png" alt="image-20220107160155158"></p>
+<blockquote>
+<p>在计算机系统中，软件和硬件在逻辑上是等效的。<br>例如：对于乘法运算，可以设计一个专门的硬件电路实现乘法运算，也可以用软件的方式，执行多次加法运算来实现。</p>
+</blockquote>
+<h4 id="现代计算机"><a href="#现代计算机" class="headerlink" title="现代计算机"></a>现代计算机</h4><ul>
+<li>以存储器为中心，CPU &#x3D; 运算器+控制器；</li>
+</ul>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191722753.png" alt="image-20220107160853468"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733507.png" alt="image-20220107160814200"></p>
+<h2 id="CPU、存储器及工作过程"><a href="#CPU、存储器及工作过程" class="headerlink" title="CPU、存储器及工作过程"></a>CPU、存储器及工作过程</h2><h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><ul>
+<li><p><strong>运算器</strong></p>
+<ul>
+<li><p><strong>ALU：算数逻辑单元</strong>（Arithmetic and Logic Unit）(组合逻辑)，通过内部复杂的电路实现算数运算、逻辑运算；</p>
+</li>
+<li><p>MQ：乘商寄存器（Multiple-Quotient Register），在乘除运算时，用于存放操作数或运算结果；</p>
+</li>
+<li><p>ACC：累加寄存器（Accumulator），用于存放操作数，或运算结果；</p>
+</li>
+<li><p>X：通用寄存器（有很多个，X只是指在用其中某一个），用于存放操作数；</p>
+</li>
+<li><p>PSW：程序状态寄存器，存放状态信息和控制信息（Program Status Word）</p>
+</li>
+<li><p>MQ, ACC, X主要存放计算的中间结果：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>加</th>
+<th>减</th>
+<th>乘</th>
+<th>除</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACC</td>
+<td>被加数，和</td>
+<td>被减数，差</td>
+<td>乘积高位</td>
+<td>被除数，余数</td>
+</tr>
+<tr>
+<td>MQ</td>
+<td></td>
+<td></td>
+<td>乘数，乘积低位</td>
+<td>商</td>
+</tr>
+<tr>
+<td>X</td>
+<td>加数</td>
+<td>减数</td>
+<td>被乘数</td>
+<td>除数</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><strong>控制器</strong></p>
+<ul>
+<li><strong>CU：控制单位</strong>，分析指令，给出控制信号（Control Unit）(时序逻辑)</li>
+<li>IR：指令寄存器，存放当前执行的指令（Instruction Register）</li>
+<li>PC：指令地址，存放下一条指令地址，可以自动加1</li>
+</ul>
+</li>
+</ul>
+<h3 id="主存储器"><a href="#主存储器" class="headerlink" title="主存储器"></a>主存储器</h3><ul>
+<li>存储体：数据在存储体内按地址存储；每个地址对应一个存储单位(存储字)</li>
+<li>MAR：地址寄存器</li>
+<li>MDR：数据寄存器</li>
+</ul>
+<p>注：MAR位数反映存储单元的个数，MAR&#x3D;4位：总共有2^4^个存储单位</p>
+<p>MDR位数&#x3D;存储字长，MDR&#x3D;16位：每个存储单元可存放16bit，一个存储字(word)&#x3D;16bit； 易混淆：1个字节(Byte)&#x3D;8bit，1B&#x3D;1个字节，1b&#x3D;1bit</p>
+<h3 id="计算机工作过程—取数指令"><a href="#计算机工作过程—取数指令" class="headerlink" title="计算机工作过程—取数指令"></a>计算机工作过程—取数指令</h3><p>（这里用M表示主存中某存储单元）</p>
+<p>M(MAR)：根据MAR的数据访问存储体中的数据</p>
+<p>(ACR)：取相应寄存器中的数据</p>
+<p>指令：操作码+地址码； </p>
+<p> OP(IR)：取操作码；  Ad(IR)：取地址码</p>
+<p><strong>过程演示：取指令—分析指令—执行指令（指令周期）</strong></p>
+<p>1  <strong>(PC) —&gt; MAR</strong>：将PC(指令地址) 中的指令地址放到MDR(地址寄存器)中；</p>
+<p>2,3  <strong>M(MAR)—&gt;MDR</strong>：根据MAR中的地址，访问存储体中的数据，再将数据放入MDR(数据寄存器)（这里的数据是一条指令）；</p>
+<p>4  <strong>(MDR) —&gt; IR</strong>：将MDR拿到的指令放到 IR(指令寄存器)；（到这里取指令阶段结束）</p>
+<p>5  <strong>OP(IR) —&gt;CU</strong>：从IR中取出操作码，放入CU(控制单元) ，CU会分析指令；（分析指令阶段结束）</p>
+<p>6 <strong>Ad(IR) —&gt; MAR</strong>：从IR中取出地址码，放入MAR；</p>
+<p>7,8  <strong>M(MAR) —&gt;MDR</strong>：根据MAR中的地址，访问存储体中的数据，再将数据放入MDR(数据寄存器)（这里的数据是要进行操作的数据）；</p>
+<p>9  <strong>MDR—&gt;(运算器中的寄存器)</strong> ：将MDR拿到的数据放到运算器中的对应的寄存器中（指令执行阶段结束）</p>
+<p>注：CPU<strong>区分MDR中取出的是指令还是数据的依据：指令周期的不同阶段</strong></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733007.png" alt="image-20211121101940553"></p>
+<h2 id="计算机的层次结构"><a href="#计算机的层次结构" class="headerlink" title="计算机的层次结构"></a>计算机的层次结构</h2><p>从高到低依次为：</p>
+<ul>
+<li>软件<ul>
+<li>虚拟机器M4（高级语言机器）：用编译程序翻译成汇编语言程序</li>
+<li>虚拟机器M3（汇编语言机器）：用汇编程序翻译成机器语言程序</li>
+<li>虚拟机器M2（操作系统机器）：向上提供“广义指令”（即系统调用）</li>
+</ul>
+</li>
+<li>硬件<ul>
+<li>传统机器M1（机器语言机器）：执行二进制机器指令</li>
+<li>微程序机器M0（微指令系统）：用硬件直接执行微指令</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机的性能指标"><a href="#计算机的性能指标" class="headerlink" title="计算机的性能指标"></a>计算机的性能指标</h2><h4 id="存储器的性能指标"><a href="#存储器的性能指标" class="headerlink" title="存储器的性能指标"></a>存储器的性能指标</h4><p>存储器&#x3D;存储体+MAR+MDR</p>
+<p>其中MAR位数反映存储单元的个数（最多存多少个），MDR位数&#x3D;存储字长&#x3D;每个存储单元的大小</p>
+<p><strong>总容量 &#x3D; 存储单位个数 * 存储字长(bit)</strong></p>
+<p>例：MAR为32位，MDR为8位，则总容量 &#x3D; 2^32^ * 8 bit &#x3D; 4GB</p>
+<hr>
+<h4 id="CPU的性能指标"><a href="#CPU的性能指标" class="headerlink" title="CPU的性能指标"></a>CPU的性能指标</h4><p><strong>CPU时钟周期</strong>：又称震荡周期，是计算机中最基本的，最小的时间单位。在一个时钟周期内，CPU仅能完成一个最基本的动作。单位：微秒、纳秒</p>
+<p><strong>CPU主频（时钟频率）</strong>：1 &#x2F; CPU时钟周期， 单位：赫兹，Hz</p>
+<p><strong>CPI</strong>（Clock cycle Per Instruction）：执行一条指令所需的时钟周期数。不同指令或相同指令的CPI都可能不同</p>
+<p><strong>执行一条指令的耗时</strong> &#x3D; CPI * CPU时钟周期</p>
+<p><strong>CPU执行时间</strong> &#x3D; CPU时钟周期数 &#x2F; 主频 &#x3D; （指令条数 * CPI）&#x2F; 主频</p>
+<p><strong>IPS</strong>（Instructions Per Second）：每秒执行多少条指令 （KIPS, MIPS….）</p>
+<p><strong>IPS &#x3D; 主频 &#x2F; 平均CPI</strong></p>
+<p><strong>FLOPS</strong>（Floating-point Operations Per Second）：每秒执行多少次浮点数运算（KFLOPS, MFLOPS, GFLOPS, TFLOPS….）</p>
+<hr>
+<h4 id="系统整体的性能指标"><a href="#系统整体的性能指标" class="headerlink" title="系统整体的性能指标"></a>系统整体的性能指标</h4><p>数据通路带宽：数据总线一次所能并行传递信息的位数；</p>
+<p>吞吐量：系统在单位时间内处理请求的数量（主要取决于主存的存取周期）；</p>
+<p>响应时间：指从用户向计算机发送一个请求，到系统对该请求做出响应并获得所需结果的等待时间；</p>
+<hr>
+<h1 id="二、数据的表示和运算"><a href="#二、数据的表示和运算" class="headerlink" title="二、数据的表示和运算"></a>二、数据的表示和运算</h1><h2 id="进位计数制"><a href="#进位计数制" class="headerlink" title="进位计数制"></a>进位计数制</h2><p>r进制：使用<strong>符号</strong> 和 <strong>符号所在的位置</strong>也反映权重。</p>
+<ul>
+<li>基数：每个位所能使用的不同符号个数，r进制的基数为r；</li>
+</ul>
+<blockquote>
+<p>计算机采用二进制：</p>
+<ul>
+<li>数值的每个位，可以使用具有两个稳定状态的物理器件表示；</li>
+<li>0，1正好对应逻辑值 真&#x2F;假，方便实现逻辑运算；</li>
+<li>可利用逻辑门电路实现算术运算；</li>
+</ul>
+</blockquote>
+<p>进制转换：</p>
+<ul>
+<li><p>r进制 到 十进制：</p>
+<p>r 进制的数值 &#x3D; 各数码位与位权的乘积之和。</p>
+</li>
+<li><p>二进制 到 八进制：</p>
+<p>每3个二进制位 对应一个八进制位；</p>
+</li>
+<li><p>二进制 到 十六进制：</p>
+<p>每4个二进制位 对应一个八进制位；</p>
+</li>
+<li><p>十进制 到 r进制：</p>
+<p>整数部分：除基取余法（先取得的“余”是整数的低位）</p>
+<p>小数部分：乘基取整法（先取得的“整”是小数的高位）</p>
+</li>
+</ul>
+<hr>
+<p>真值：符合人类习惯，实际的带正负号的数字；</p>
+<p>机器数：数字实际存到机器里的形式，正负号需要被“数字化”；</p>
+<h2 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h2><h3 id="8421码"><a href="#8421码" class="headerlink" title="8421码"></a>8421码</h3><p>用二进制编码的十进制（Binary-Coded Decimal），使用 四位二进制 表示 十进制的 0 ~ 9，冗余6位，</p>
+<p>BCD码的加法： 如果加法运算后，得到的十进制数为10 ~ 18，不在映射表内，即超过0~9的范围，则再加上6，即二进制的0110，则二进制数一定会前进一位，之后在前补3个0，则可以得到二个 四位二进制表示的数。</p>
+<p>例：5 + 8 &#x3D; 13 —&gt; 0101 + 1000 &#x3D; 1101，超出范围，则再加6，得到 1 0011，在前面补0得到 0001 0011，即13</p>
+<p>除了8421码，还有余3码，2421码也是用二进制编码表示十进制</p>
+<h2 id="字符与字符串"><a href="#字符与字符串" class="headerlink" title="字符与字符串"></a>字符与字符串</h2><p>在<strong>ASCII码</strong>中， <strong>32~126为可印刷字符，其余为控制或通信字符（ASCII共128个）</strong></p>
+<p>数字0~9：48（0011<strong>0000</strong>） ~ 57（0011<strong>1001</strong>）</p>
+<p>大写字母：65（0100<strong>0001</strong>）~ 90（0101<strong>1010</strong>）</p>
+<p>小写字母：97（0110<strong>0001</strong>）~ 122（0111<strong>1010</strong>）</p>
+<p><strong>CB</strong> 2312-80码：汉字+各种符号共7445个</p>
+<ul>
+<li><strong>区位码</strong>：<strong>94个区，每个区94个位置</strong>，如 汉字“啊”的区位码：10H	01H</li>
+<li><strong>国标码</strong>：在区位码的两个标号上加上<strong>20H</strong>，防止信息交换时，与ASCII码的“控制&#x2F;通信字符”冲突</li>
+<li><strong>汉字内码</strong>：在国标码的两个标号上加上<strong>80H</strong>，即加上128，保证高位为1，与ASCII区分</li>
+</ul>
+<p>输入：<strong>输入编码</strong>； </p>
+<p>输出：<strong>汉字字形码</strong></p>
+<p><strong>字符串存储</strong></p>
+<p>字母用一个字节存储，<strong>汉字用两个字节</strong>存储，</p>
+<p>汉字的存储又分为大端模式和小端模式，<strong>大端模式是将数据的最高有效字节存放在低地址单元中，小端模式放在高地址单元中</strong></p>
+<h2 id="校验码"><a href="#校验码" class="headerlink" title="校验码"></a>校验码</h2><h3 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h3><p>奇校验码：整个校验码（有效信息位和校验位）中的“1”的个数为奇数；</p>
+<p>偶校验码：整个校验码（有效信息位和校验位）中的“1”的个数为偶数；</p>
+<p>奇偶校验码分为<strong>1位的奇偶校验位</strong>和n位的有效信息位，奇偶校验位是为了让“1”的个数维持想要的奇数或偶数。</p>
+<p>偶校验位的硬件实现：<strong>各信息进行异或（模2加）运算，得到的结果即为偶校验位</strong></p>
+<p>进行<strong>偶校验</strong>：<strong>所有位进行异或，如果结果为1说明出错</strong></p>
+<p>偶校验只能发现奇数位错误，且无法确定哪一位出错。</p>
+<h3 id="海明码"><a href="#海明码" class="headerlink" title="海明码"></a>海明码</h3><p>将信息位分组进行偶校验，即设立多个校验位，可以标注出出错位置</p>
+<p>需要设立多少个校验位？</p>
+<blockquote>
+<p>设信息位有n位，校验位有k位，而k个校验位一共能表示2^k^种状态， 所以 2^k^ - 1 &gt;&#x3D; n + k（减1是因为有一个是正确的状态，没出错）</p>
+</blockquote>
+<p>n与k的关系部分关系表：</p>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>1</th>
+<th>2~4</th>
+<th>5~11</th>
+<th>12~26</th>
+<th>27~57</th>
+<th>58~120</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>k</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p>校验位的分布：<strong>校验位 P<del>i</del></strong> 应放在海明位号为 <strong>2^i-1^ 的位置</strong>上，其他位放有效信息。</p>
+<p>求校验位的值：设各信息所在的位数 的二进制表示为x，第一个校验位等于 所有 x 的第一位(最低位)为1的 信息位值 的异或运算 结果；第二个校验位等于 所有 x 的第二位(最低第二位)为1的 信息位值 的异或运算 结果。。。</p>
+<p>纠错：将第 i 个校验位值 和  x 的第i位(最低第 i 位)为1的 信息位值 进行异或运算，如果所有 运算后都得到0，则没有出错，如果有 结果为1 的情况出现，则说明出错，将所有校验位 拼成一个二进制表示，其值就是出错的位数。 </p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733184.png" alt="image-20211118185904877"></p>
+<p>海明码检错能力：1位， 纠错能力 ： 2位，此时海明码没办法区分 是一个bit位出错还是两个bit位出错，为此，需加上全校验位，对全体再进行一次偶校验，才能识别是一位错还是两位错。</p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733454.png" alt="image-20211118185817499"></p>
+<h3 id="循环冗余校验码-CRC"><a href="#循环冗余校验码-CRC" class="headerlink" title="循环冗余校验码(CRC)"></a>循环冗余校验码(CRC)</h3><p>CRC (Cyclic Redundancy Check)</p>
+<ol>
+<li><p>确定K, R, 生成多项式对应的二进制码</p>
+<p>首先，需要先约定好 生成多项式 G(x) &#x3D; x^n^ + x^n-1^+ ….. + x^0^，</p>
+<p>然后确定 信息位的长度K &#x3D; 信息码的长度， 校验位的长度 R &#x3D; 生成多项式最高次幂n，整个校验码位数&#x3D; K + R；</p>
+<p>根据生成多项式里各项的常数部分，生成对应二进制码</p>
+</li>
+<li><p>移位</p>
+<p>将信息码左移R位，低位补0，</p>
+</li>
+<li><p>相除</p>
+<p>对<strong>移位后的信息码</strong>，用<strong>生成多项式的二进制码</strong> 进行<strong>模2除法</strong>，<strong>产生的余数</strong> 即为校验位信息</p>
+<p>模2除，模2减（异或运算）：</p>
+</li>
+<li><p>检错和纠错</p>
+<p>对接收的数据，用约定好的生成多项式的二进制码 进行模2除，得到余数为R位全为0，说明没有出错；余数不为0，说明出错，余数是多少，就是多少位出错。</p>
+<p>CRC可检测出：所有奇数个错误；所有双比特错误；所有小于等于校验位长度的连续错误</p>
+<p>CRC码中的信息位太多，会使纠错得到的余数无法表示太高位，如果满足2^R^-1&gt;&#x3D;K+R，则CRC可纠正1位错，不过CRC通常用于网络传输，只发挥检错功能（网络传输一次会发送较多bit）</p>
+</li>
+</ol>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733238.png" alt="image-20211118190033659"></p>
+<h2 id="定点数表示"><a href="#定点数表示" class="headerlink" title="定点数表示"></a>定点数表示</h2><h3 id="原、补、移码"><a href="#原、补、移码" class="headerlink" title="原、补、移码"></a>原、补、移码</h3><p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191733031.png" alt="image-20211118190147440"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734022.png" alt="image-20211118190157729"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734970.png" alt="image-20211118190229297"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734242.png" alt="image-20211118190237631"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734504.png" alt="image-20211118190244928"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734382.png" alt="image-20211118190252353"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734443.png" alt="image-20211118190302522"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734164.png" alt="image-20211118190314258"></p>
+<p><strong>使用补码的意义：让减法操作转变为加法操作，节省硬件成本。</strong>（涉及求模运算的意义）</p>
+<p>因为计算机是固定字长的，所以在进行运算时会舍去溢出的位，这相当于 直接对结果进行了求模运算（%2^n^）。</p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734109.png" alt="image-20211118190348822"></p>
+<h3 id="符号拓展"><a href="#符号拓展" class="headerlink" title="符号拓展"></a>符号拓展</h3><p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734958.png" alt="image-20211118191549313"></p>
+<h2 id="定点数运算"><a href="#定点数运算" class="headerlink" title="定点数运算"></a>定点数运算</h2><h3 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h3><h4 id="算数移位"><a href="#算数移位" class="headerlink" title="算数移位"></a>算数移位</h4><p> <img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734222.png" alt="image-20211118190446667"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734150.png" alt="image-20211118190500971"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734904.png" alt="image-20211118190508649"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734438.png" alt="image-20211118190521365"></p>
+<h4 id="逻辑移位"><a href="#逻辑移位" class="headerlink" title="逻辑移位"></a>逻辑移位</h4><p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734790.png" alt="image-20211118190549711"></p>
+<h4 id="循环移位"><a href="#循环移位" class="headerlink" title="循环移位"></a>循环移位</h4><p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734286.png" alt="image-20211118190557099"></p>
+<h3 id="加减运算"><a href="#加减运算" class="headerlink" title="加减运算"></a>加减运算</h3><p>补码的加减运算：运算同源码一样，求出结果后再转为原码</p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734956.png" alt="image-20211118190803498"></p>
+<p>对于补码的加减运算出现 溢出情况的判断，有三种判断方式：</p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734873.png" alt="image-20211118191231755"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191734424.png" alt="image-20211118191321945"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191735427.png" alt="image-20211118191330388"></p>
+<h3 id="乘法运算"><a href="#乘法运算" class="headerlink" title="乘法运算"></a>乘法运算</h3><p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191735150.png" alt="image-20211118191717510"></p>
+<p>计算机 的乘法运算 可以对比平时 手算乘法时列的竖式公式，其本质是利用r进制的位权。</p>
+<p>计算机实现 <strong>原码</strong>的乘法运算：<strong>先加法，再移位，重复n次</strong>（左移位相当于手算时的错位）</p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736943.png" alt="image-20211118192237385"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736326.png" alt="image-20211118192245580"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736434.png" alt="image-20211118192252905"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736419.png" alt="image-20211118192305905"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736449.png" alt="image-20211118192328486"></p>
+<p>补码的乘法运算：</p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736406.png" alt="image-20211118192428730"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736350.png" alt="image-20211118192540200"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736233.png" alt="image-20211118192547837"></p>
+<p><img src="https://gitee.com/ValcanoZz/typora_-image/raw/master/img/202203191736060.png" alt="image-20211118192558787"></p>
+<h3 id="除法运算"><a href="#除法运算" class="headerlink" title="除法运算"></a>除法运算</h3><p>根据手算除法的过程，计算机 实现原码的除法运算：<strong>看当前位的商为0&#x2F;1，得到余数，余数末尾补0，得到的余数当作新的被除数。</strong></p>
+<p>（<strong>定点小数除法</strong> 规定 <strong>被除数一定要小于除数</strong>，不然结果会大于1，而定点小数无法表示大于1的数）</p>
+<h4 id="原码—恢复余数法"><a href="#原码—恢复余数法" class="headerlink" title="原码—恢复余数法"></a>原码—恢复余数法</h4><p>计算机不会去判断当前被除数和除数谁打谁小，而是直接将当前商位置为1(MQ里操作)，计算得到余数（ 余数 &#x3D; 被除数 + [-|y|]<del>补码</del> ），如果余数为负，说明商为1是错的，所以会将商位置为0，让余数重新加上除数，即让余数恢复为被除数，然后再计算商为0时应得的余数。</p>
+<p><img src="D:/Note/Typora_picture/image-20211118192659788.png" alt="image-20211118192659788"></p>
+<p><img src="D:/Note/Typora_picture/image-20211118193424237.png" alt="image-20211118193424237"></p>
+<p><img src="D:/Note/Typora_picture/image-20211118193444434.png" alt="image-20211118193444434"></p>
+<p><img src="D:/Note/Typora_picture/image-20211118193453852.png" alt="image-20211118193453852"></p>
+<h4 id="原码—加减交替法"><a href="#原码—加减交替法" class="headerlink" title="原码—加减交替法"></a>原码—加减交替法</h4><p>恢复余数法中的一些步骤可以合并，根据恢复余数法前后的结果，可以算出：如果商位置1是错的（即得到余数为负），则商位置1，然后让余数左移一位（乘2），再加上|除数|，这样可以直接将错误的余数转化为正确的余数。</p>
+<p><img src="D:/Note/Typora_picture/image-20211118193510093.png" alt="image-20211118193510093"></p>
+<p><img src="D:/Note/Typora_picture/image-20211118194222167.png" alt="image-20211118194222167"></p>
+<p><img src="D:/Note/Typora_picture/image-20211118194232160.png" alt="image-20211118194232160"></p>
+<h4 id="补码—加减交替法"><a href="#补码—加减交替法" class="headerlink" title="补码—加减交替法"></a>补码—加减交替法</h4><p>补码的加减交替法，与原码不同在于：补码除法的<strong>符号位会参与运算</strong>（求补码时不会先求绝对值），数据采用<strong>双符号位</strong>。</p>
+<p>补码除法<strong>求余数</strong>时，余数不会直接等于（被除数 + [-|y|]<del>补码</del> ），而是：<strong>1. 如果被除数和除数同号，则被除数减去除数，2. 如果异号，则被除数加上除数。</strong></p>
+<p>对于<strong>商位是1还是0</strong>：<strong>1. 余数和除数同号，则商为1，然后余数左移一位，减去除数；2. 余数和除数异号，商为0，余数左移一位，加上除数。过程重复n次。</strong></p>
+<p>最后，<strong>末尾商会恒置为1</strong>，这样可以不考虑最后算出的余数是否需要恢复余数，省去额外电路的设计，且这样做<strong>精度误差是不超过 2^-n^</strong> 的。</p>
+<p><img src="D:/Note/Typora_picture/image-20211118194241590.png" alt="image-20211118194241590"></p>
+<p><img src="D:/Note/Typora_picture/image-20211118194251001.png" alt="image-20211118194251001"></p>
+<h2 id="数据存储-边界对齐"><a href="#数据存储-边界对齐" class="headerlink" title="数据存储|边界对齐"></a>数据存储|边界对齐</h2><p><img src="D:/Note/Typora_picture/image-20211120184018313.png" alt="image-20211120184018313"></p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><h3 id="IEEE-754标准"><a href="#IEEE-754标准" class="headerlink" title="IEEE 754标准"></a>IEEE 754标准</h3><p>IEEE读作 i triple e ：triple是三倍的意思</p>
+<p><img src="D:/Note/Typora_picture/image-20211120184237269.png" alt="image-20211120184237269"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184326877.png" alt="image-20211120184326877"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184331950.png" alt="image-20211120184331950"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184336345.png" alt="image-20211120184336345"></p>
+<h3 id="浮点数的加减运算"><a href="#浮点数的加减运算" class="headerlink" title="浮点数的加减运算"></a>浮点数的加减运算</h3><p><img src="D:/Note/Typora_picture/image-20211120184152834.png" alt="image-20211120184152834"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184617835.png" alt="image-20211120184617835"></p>
+<p>强制类型转换</p>
+<p><img src="D:/Note/Typora_picture/image-20211120184633939.png" alt="image-20211120184633939"></p>
+<h3 id="ALU大致原理"><a href="#ALU大致原理" class="headerlink" title="ALU大致原理"></a>ALU大致原理</h3><p>电路基础知识</p>
+<p><img src="D:/Note/Typora_picture/image-20211120184649625.png" alt="image-20211120184649625"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184653982.png" alt="image-20211120184653982"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184658348.png" alt="image-20211120184658348"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184706787.png" alt="image-20211120184706787"></p>
+<p>加法器的实现</p>
+<p><img src="D:/Note/Typora_picture/image-20211120184713453.png" alt="image-20211120184713453"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184718342.png" alt="image-20211120184718342"></p>
+<p><img src="D:/Note/Typora_picture/image-20211120184732882.png" alt="image-20211120184732882"></p>
+<p>加法器、ALU改进</p>
+<p><img src="D:/Note/Typora_picture/image-20211120184739339.png" alt="image-20211120184739339"></p>
+<p><img src="D:/Note/Typora_picture/image-20220111095619918.png" alt="image-20220111095619918"></p>
+<p><img src="D:/Note/Typora_picture/image-20220111095547417.png" alt="image-20220111095547417"></p>
+<h1 id="三、存储系统"><a href="#三、存储系统" class="headerlink" title="三、存储系统"></a>三、存储系统</h1><h2 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h2><p>功能：存放二进制信息。</p>
+<p>层次：</p>
+<ul>
+<li>高速缓冲存储器（cache）</li>
+<li>主存储器（主存、内存）</li>
+<li>辅助存储器（辅存、外存）</li>
+</ul>
+<blockquote>
+<p>Cache解决CPU和主存之间速度不匹配的问题，由硬件自动完成；</p>
+<p>辅存解决主存容量不够的问题，需要硬件和操作系统配合完成。</p>
+</blockquote>
+<h3 id="存储器模型"><a href="#存储器模型" class="headerlink" title="存储器模型"></a>存储器模型</h3><p><img src="D:/Note/Typora_picture/image-20211120185413723.png" alt="image-20211120185413723"></p>
+<ul>
+<li>存储矩阵：由大量相同的位存储单元阵列构成。</li>
+<li>译码驱动：将来自地址总线的地址信号翻译成对应存储单元的选通信号，该信号在读写电路的配合下完成对被选中单元的读&#x2F;操作。</li>
+<li>读写电路：包括读出放大器和写入电路，用来完成读&#x2F;写操作。</li>
+<li>读&#x2F;写控制线：决定芯片进行读&#x2F;写操作。</li>
+<li>片选线：确定哪个存储芯片被选中。可用于容量扩充。</li>
+<li>地址线：是单向输入的，其位数与存储字的个数有关。</li>
+<li>数据线：是双向的，其位数与读出或写入的数据位数有关。</li>
+<li>数据线数和地址线数共同反映存储芯片容量的大小；如地址线10根，数据线8根，则芯片容量-&#x3D;20×8-8K位。</li>
+</ul>
+<h3 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h3><p>有多种方式：可按 字节、字、半字、双字 寻址；</p>
+<p>多字节存放方式：</p>
+<ul>
+<li>大端方式：数值的高位放在地址的低位；</li>
+<li>小端方式：数值的低位放在地址的低位；</li>
+</ul>
+<h3 id="随机存取器RAM"><a href="#随机存取器RAM" class="headerlink" title="随机存取器RAM"></a>随机存取器RAM</h3><p><strong>SRAM（Static Random Access Memory ）：静态随机存储器</strong></p>
+<p><strong>DRAM（Dynamic Random Access Memory）：动态随机存取器</strong></p>
+<blockquote>
+<p>两者都是以电信号的形式存储0和1，断点就丢失信息，所以也叫易失性存储器。</p>
+</blockquote>
+<p><strong>SRAM：</strong></p>
+<ul>
+<li>存储信息（0、1）：使用<strong>触发器——双稳态</strong>；</li>
+<li><strong>非破坏性读出</strong>：读——查看触发器状态；写——改变触发器状态；</li>
+<li><strong>不需刷新</strong>：触发器能保持两种稳定的状态；</li>
+<li><strong>同时送行列式地址</strong>；</li>
+<li><strong>运行速度 快</strong></li>
+<li><strong>集成度 低</strong>：6个逻辑元件；</li>
+<li><strong>发热量 大</strong></li>
+<li><strong>存储成本 高</strong></li>
+</ul>
+<p><strong>DRAM：</strong></p>
+<ul>
+<li>存储信息（0、1）：使用<strong>电容——充放电</strong>；</li>
+<li><strong>破坏性读出</strong>：读——连接电容，检测电流变化，读出后需要重新充电；写——给电容充&#x2F;放电</li>
+<li><strong>需刷新</strong>：电容上的电荷只能维持2ms；</li>
+<li><strong>分两次送行列式地址</strong>：地址分成相同位的行列地址，地址线可以复用，线数减半；</li>
+<li><strong>运行速度 慢</strong></li>
+<li><strong>集成度 高</strong>：1或3个逻辑元件；</li>
+<li><strong>发热量 小</strong></li>
+<li><strong>存储成本 低</strong></li>
+</ul>
+<blockquote>
+<p>由于SRAM速度快，成本高，所以常用作Cache；而DRAM常用作主存；</p>
+<p>SDRAM：同步动态随机存储器，是DRAM的发展变形</p>
+</blockquote>
+<hr>
+<hr>
+<p><strong>DRAM的刷新</strong></p>
+<p>刷新周期：一般2ms</p>
+<p>每次刷新：以行为单位，每次刷新一行存储单元</p>
+<blockquote>
+<p>为什么使用行列地址？</p>
+<p>因为如果采用一维模式的话，2^n^个存储单元需要2^n^根选通线；如果使用行列地址，将一个地址分成两半，则每一半地址只需2^n&#x2F;2^根线，一共需要2 * 2^n&#x2F;2^ 根线。</p>
+<p>如：2^8^ &#x3D; 256根选通线，只需2 * 2^4^&#x3D; 32根选通线</p>
+</blockquote>
+<p>如何刷新：有硬件支持，读出一行的信息后重新写入，占用一个读&#x2F;写周期；</p>
+<p>刷新时机：</p>
+<ul>
+<li><p>分散刷新：</p>
+<p>每次读写完都刷新一行，这样系统的存取周期会翻倍。</p>
+</li>
+<li><p>集中刷新：</p>
+<p>在刷新周期内集中安排一段时间用于刷新全部行，这段时间内无法访问存储器，称为访存“死区”。</p>
+</li>
+<li><p>异步刷新：</p>
+<p>在刷新周期内刷新1次即可，即刷新请求在刷新周期内均匀分布，”死区“会被平均分散。</p>
+</li>
+</ul>
+<h3 id="只读存储器ROM"><a href="#只读存储器ROM" class="headerlink" title="只读存储器ROM"></a>只读存储器ROM</h3><p>（Read-Only Memory）</p>
+<blockquote>
+<p>ROM是非易失性存储器</p>
+</blockquote>
+<p>类型：</p>
+<ul>
+<li><p>膜式只读存储器(MROM)：</p>
+<p>存储内容由半导体制造厂按用户提出的要求<br>在芯片的生产过程中直接写入，无法修改。</p>
+</li>
+<li><p>一次可编程只读存储器（PROM）：</p>
+<p>存储内容由用户用专门的设备（编程器）一次性写入，之后无法修改。</p>
+</li>
+<li><p>可擦除可编程只读存储器( EPROM)：</p>
+<p>修改次数有限，写入时间很长；类型有 紫外线擦除（UVEPROM）、电擦除（EEPROM）。</p>
+</li>
+<li><p>闪速存储器（Flash Memory）：</p>
+<p>如U盘，写入速度较快。</p>
+</li>
+<li><p>固态硬盘( Solid State Drives)：</p>
+<p>控制单元 + FLASH芯片</p>
+</li>
+</ul>
+<h2 id="主存与CPU连接"><a href="#主存与CPU连接" class="headerlink" title="主存与CPU连接"></a>主存与CPU连接</h2><p><img src="D:/Note/Typora_picture/image-20220110112634686.png" alt="image-20220110112634686"></p>
+<p><strong>连接原理：</strong></p>
+<ul>
+<li>主存储器通过数据总线、地址总线和控制总线与CPU连接；</li>
+<li>（数据总线的位数 * 工作频率 ）正比于数据传输速率；</li>
+<li>地址总线的位数决定了可寻址的最大内存空间；</li>
+<li>控制总线（读&#x2F;写）指出总线周期的类型 和 本次输入&#x2F;输出操作完成的时刻；</li>
+</ul>
+<p><strong>主存容量的扩展：</strong></p>
+<p>由于单个存储芯片的容量有限，在字数或字长方面与实际的要求都有差距，因此需要在<strong>字</strong>和<strong>位</strong>两方面进行扩展。</p>
+<ul>
+<li><p><strong>位扩展法</strong></p>
+<p>CPU的数据线数与存储芯片的数据位数不一定相等，此时必须对存储芯片扩位，使其数据位数与CPU的数据线数相等。<br>位扩展的连接方式是将多个存储芯片的地址端、片选端和读写控制端相应并联，数据端分别引出。</p>
+<p><img src="D:/Note/Typora_picture/image-20220110113624661.png" alt="image-20220110113624661"></p>
+</li>
+<li><p><strong>字扩展法</strong></p>
+<p>字扩展是指增加存储器中字的数量，而位数不变。字扩展将芯片的地址线、数据线、读写控制线相应并联，而由片选信号来区分各芯片的地址范围。</p>
+</li>
+<li><p><strong>字位同时扩展法</strong></p>
+<p>实际上，存储器往往需要同时扩充字和位。字位同时扩展是指既增加存储字的数量，又增加存储字长。</p>
+<p><img src="D:/Note/Typora_picture/image-20220110113930006.png" alt="image-20220110113930006"></p>
+<p><img src="D:/Note/Typora_picture/image-20220110113939759.png" alt="image-20220110113939759"></p>
+</li>
+</ul>
+<hr>
+<p><strong>存储芯片的地址分配和片选</strong></p>
+<p>CPU对存储器的访问：先片选 再字选。</p>
+<ol>
+<li>片选：选择存储器芯片；<ul>
+<li>线选法：用除片内寻址外的高位地址线分别接至各个存储芯片的片选。（线路简单，地址不连续，一条线只产生一个选片信号）</li>
+<li><strong>译码片选法</strong>：用除片内寻址外的高位地址线通过地址译码器芯片产生片选信号。（电路复杂，地址空间连续，可增加逻辑设计，n条线可产生2^n^个选片信号）</li>
+</ul>
+</li>
+<li>字选：对选中的芯片，依据地址码 进行数据存取；</li>
+</ol>
+<h2 id="双口RAM和多模块存储器"><a href="#双口RAM和多模块存储器" class="headerlink" title="双口RAM和多模块存储器"></a>双口RAM和多模块存储器</h2><p>提高CPU访问存储器的速度：</p>
+<ul>
+<li>双端口存储器：空间并行；</li>
+<li>多模块存储器：时间并行。</li>
+</ul>
+<p><strong>双端口RAM：</strong></p>
+<p>双端口RAM是指同一个存储器有左、右两个独立的端口，分别具有两组相互独立的地址线、数据线和读写控制线，允许两个独立的控制器同时异步地访问存储单元。</p>
+<p>注：当两个端口同时对存储器的同一地址进行修改时，可能会发生数据错误或读取错误；</p>
+<p><img src="D:/Note/Typora_picture/image-20220110115750687.png" alt="image-20220110115750687"></p>
+<p>存取周期：</p>
+<p><img src="D:/Note/Typora_picture/image-20220111085521860.png" alt="image-20220111085521860"></p>
+<p><strong>多模块存储器：</strong></p>
+<p>常用的有：单体多字存储器 ，多体低位交叉存储器。</p>
+<ul>
+<li><p>单体多字存储器：</p>
+<p>单体多字系统的特点是存储器中只有一个存储体，每个存储单元存储m个字，总线宽度也为m个字。一次并行读出m个字，地址必须顺序排列并处于同一存储单元。<br>单体多字系统在一个存取周期内，从同一地址取出m条指令，然后将指令逐条送至CPU执行，即每隔1&#x2F; m 存取周期，CPU向主存取一条指令。显然，这増大了存储器的带宽，提高了单体存储器的工作速度。</p>
+<p>缺点：指令和数据在主存内必须是连续存放的，一旦遇到转移指令，或操作数不能连续存放，这种方法的效果就不明显。</p>
+</li>
+<li><p><strong>多体并行存储器：</strong></p>
+<p>多体并行存储器由多体模块组成。每个模块都有相同的容量和存取速度，各模块都有独立的读写控制电路、地址寄存器和数据寄存器。它们既能并行工作，又能交叉工作。<br>多体并行存储器分为 高位交叉编址（顺序方式）和低位交又编址（交又方式）两种。</p>
+<ul>
+<li><p>高位交叉编制：</p>
+<p>高位地址表示体号，低位地址表示体内地址；总是会把低位的体内地址送到由高位体号确定的模块内进行译码。</p>
+<p>访问一个连续主存块时，总是先在一个模块内访问，等到该模块访问完才转到下一个模块访问，CPU总是按顺序访问存储模块，存储模块不能被并行访问，因而不能提高存储器的吞吐率。</p>
+<blockquote>
+<p>模块内的地址是连续的，存取方式仍是串行存取，因此这种存储器仍是顺序存储器</p>
+</blockquote>
+<p><img src="D:/Note/Typora_picture/image-20220110120657545.png" alt="image-20220110120657545"></p>
+</li>
+<li><p><strong>低位交叉编制：</strong></p>
+<p>低位地址为体号，高位地址为体内地址。</p>
+<p>低位交叉编址方式下，总是把高位的体内地址送到由低位体号确定的模块内进行译码。程序连续存放在相邻模块中，因此称采用此编址方式的存储器为交叉存储器。</p>
+<p>采用低位交叉编址后，可在不改变每个模块存取周期的前提下，采用流水线的方式并行存取，提高存储器的带宽。</p>
+<p><img src="D:/Note/Typora_picture/image-20220110120837771.png" alt="image-20220110120837771"></p>
+<p><img src="D:/Note/Typora_picture/image-20220110120848340.png" alt="image-20220110120848340"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="高速缓冲存储器Cache"><a href="#高速缓冲存储器Cache" class="headerlink" title="高速缓冲存储器Cache"></a>高速缓冲存储器Cache</h2><p>提高整个存储系统的工作速度。</p>
+<p>程序访问的局部性原理：</p>
+<ul>
+<li><strong>时间局部性</strong>：在最近的未来要用到的信息，很可能是现在正在使用的信息，因为程序中存在循环。</li>
+<li><strong>空间局部性</strong>：在最近的未来要用到的信息，很可能与现在正在使用的信息在存储空间上是邻近的，因为指令通常是顺序存放、顺序执行的，数据一般也是以向量、数组等形式簇聚地存储在一起的。</li>
+</ul>
+<p><strong>高速缓冲</strong>技术就是利用程序访问的局部性原理，把<strong>程序中正在使用的部分</strong>存放在一个<strong>高速的、容量较小的 Cache</strong>中，使CPU的访存操作大多数针对 Cache进行，从而大大提高程序的执行速度。</p>
+<hr>
+<hr>
+<p><strong>Cache基本工作原理：</strong></p>
+<p>Cache位于存储器层次结构的顶层，通常由SRAM构成，其基本结构如图：</p>
+<p><img src="D:/Note/Typora_picture/image-20220111090254388.png" alt="image-20220111090254388"></p>
+<p>为了便于交换信息，Cache和主存都被划分为相等的块，Cache块也叫Cache行，每块的长度称为块长（Cache行长）；</p>
+<p>由于Cache的容量远小于主存的容量，因此它只保存主存中最活跃的若干块的副本。</p>
+<ul>
+<li>当CPU发出读请求时，若访存地址在Cache中命中，则将该地址转化为Cache地址，对Cache进行读操作，与主存无关。若Cache未命中，则仍需要访问主存，将该字所在的块一次性从主存调入Cache，若Cache已满，则需要根据某替换算法，将Cache中的某块替换掉。</li>
+<li>当CPU发出写请求时，若 Cache命中，有可能会遇到 Cache与主存中的内容不一致的问题。例如，由于CPU写 Cache，把 Cache某单元中的内容从X修改成了Y，而主存对应单元中的内容仍然是X，没有改变。所以若 Cache命中，需要按照一定的写策略处理，常见的处理方法有全写法和写回法。</li>
+</ul>
+<blockquote>
+<p>数据交换单位：CPU与主存间以字为单位，Cache与主存间以Cache块为单位。</p>
+<p>注：某些计算机也采用同时访问 Cache和主存的方式，若Cach命中，则主存访问终止。</p>
+</blockquote>
+<hr>
+<hr>
+<p><strong>Cache和主存的映射关系</strong></p>
+<p>Cache行中的信息是主存中某个块的副本，地址映射是指把主存地址空间映射到 Cache地址空间，即把存放在主存中的信息按照某种规则装入 Cache.<br>由于 Cache行数比主存块数少得多，因此主存中只有一部分块的信息可放在 Cache中，因此在 Cache中要为每块加一个标记，指明它是主存中哪一块的副本。该标记的内容相当于主存中块的编号。为了说明 Cache行中的信息是否有效，每个 Cache行需要一个有效位。</p>
+<ul>
+<li><p>直接映射</p>
+<p>主存中的每一块只能装入 Cache中的唯一位置。若这个位置已有内容，则产生块冲突，原来的块将无条件地被替换出去（无须使用替换算法）。</p>
+<p>直接映射实现简单，但不够灵活，即使Cache的其他许多地址空着也不能占用，这使得直接映射的块冲突概率最高，空间利用率最低。</p>
+</li>
+<li><p>全相联映射</p>
+<p>主存中的每一块可以装入 Cache中的任何位置，每行的标记用于指出该行取自主存的哪一块，所以CPU访存时需要与所有 Cache行的标记进行比较。</p>
+<p>全相联映射方式的优点是比较灵活， Cache块的冲突概率低，空间利用率高，命中率也高；缺点是标记的比较速度较慢，实现成本较高，通常需采用昂贵的按内容寻址的相联存储器进行地址映射。</p>
+</li>
+<li><p>组相联映射</p>
+<p>将 Cache空间分成大小相同的组，主存的一个数据块可以装入一组内的任何一个位置，即组间采取直接映射，而组内采取全相联映射。它是对直接映射和全相联映射的一种折中。</p>
+</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Cache块的替换算法</strong></p>
+<ul>
+<li><p>随机算法（RAND）</p>
+</li>
+<li><p>先进先出算法（FIFO）</p>
+</li>
+<li><p>近期最少使用算法（LRU）</p>
+<p>LRU算法对每个 Cache行设置一个计数器，用计数值来记录主存块的使用情况，并根据计数值选择淘汰某个块。</p>
+</li>
+<li><p>最不经常使用算法（LFU）</p>
+</li>
+</ul>
+<hr>
+<hr>
+<p><strong>Cache写策略</strong></p>
+<p>因为 Cache中的内容是主存块副本，当对 Cache中的内容进行更新时，就需选用写操作策略使 Cache内容和主存内容保持一致。此时分两种情况。</p>
+<ul>
+<li><p>对于 Cache写命中( write hit)，有两种处理方法。</p>
+<ul>
+<li><p>全写法（写直通法、wite- through）：</p>
+<p>当CPU对 Cache写命中时，必须把数据同时写入Cache和主存；当某一块需要替换时，不必把这一块写回主存，用新调入的块直接覆盖即可。</p>
+<p>这种方法实现简单，能随时保持主存数据的正确性。缺点是增加了访存次数，降低了 Cache的效率。</p>
+<blockquote>
+<p>写缓冲：为减少全写法直接写入主存的时间损耗，在 Cache和主存之间加一个写缓冲( Write Buffer)。</p>
+<p>CPU同时写数据到 Cache和写缓冲中，写缓冲再控制将内容写入主存。写缓冲是一个FIFO队列，写缓冲可以解决速度不匹配的问题。但若出现频繁写时，会使写缓冲饱和溢出。</p>
+</blockquote>
+</li>
+<li><p>写回法( write-back)：</p>
+<p>当CPU对 Cache写命中时，只修改 Cache的内容，而不立即写入主存，只有当此块被换出时才写回主存。这种方法减少了访存次数，但存在不一致的隐患。采用这种策略时，每个 Cache行必须设置一个标志位（脏位），以反映此块是否被CPU修改过。</p>
+</li>
+</ul>
+</li>
+<li><p>对于 Cache写不命中，也有两种处理方法。</p>
+<ul>
+<li><p>写分配法(wite- allocate)：</p>
+<p>加载主存中的块到 Cache中，然后更新这个Cache块。它试图利用程序的空间局部性，但缺点是每次不命中都需要从主存中读取一块。</p>
+</li>
+<li><p>非写分配法(not- write- allocate)法：</p>
+<p>只写入主存，不进行调块。</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>非写分配法通常与全写法合用，写分配法通常和写回法合用。</p>
+<p>现代计算机的 Cache通常设立多级 Cache(通常为3级)，按离CPU的远近可各自命名为L1 Cache、L2 Cache、L3 Cache，离CPU越远，访问速度越慢，容量越大。<br>指令 Cache与数据 Cache分离一般在L1级，此时通常为写分配法与写回法合用。</p>
+</blockquote>
+<h2 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h2><p>提高存储系统的容量。</p>
+<p>虚拟存储器将主存或辅存的地址空间统一编址，形成一个庞大的地址空间。虚拟存储器具有主存的速度和辅存的容量，提高了存储系统的性价比。</p>
+<ul>
+<li>虚地址、逻辑地址：用户编程所涉及的地址，虚地址对应的存储空间称为虚拟空间或逻辑空间。</li>
+<li>实地址、物理地址：对应的是主存地址空间，也称实地址空间。虚地址要比实地址大得多。</li>
+</ul>
+<p>CPU使用虚地址时，由辅助硬件找出虚地址和实地址之间的对应关系，并判断这个虚地址对应的存储单元内容是否已装入主存。——若已在主存中，则通过地址变换，CPU可直接访问主存指示的实际单元；——若不在主存中，则把包含这个字的一页或一段调入主存后再由CPU访问。——若主存已满，则采用替换算法置换主存中的一页或一段。</p>
+<blockquote>
+<p>在实际的物理存储层次上，所编程序和数据在操作系统管理下，先送入磁盘，然后操作系统将当前运行所需要的部分调入主存，供CPU使用，其余暂不运行的部分则留在磁盘中。</p>
+</blockquote>
+<hr>
+<p><strong>页式虚拟存储器</strong></p>
+<p>虚拟空间和主存空间被划分为同样大小的页，主存的页叫实页，虚存的页叫虚页。</p>
+<p>虚拟地址 被分为两个子段：虚页号和页内地址；虚拟地址到物理地址的转换由页表完成。</p>
+<blockquote>
+<p>页表</p>
+<p>是一张存放在主存中的虚页号和实页号的对照表，一般长久地保存在内存中。</p>
+<p>页表组成：</p>
+<ul>
+<li>有效位：也叫装入位，表示页面是否已调入主存；</li>
+<li>脏位：也叫修改位，表示页面是否被修改过；虚存机制中使用回写策略。</li>
+<li>引用位：也称使用位，用来配合替换策略进行设置。</li>
+<li>物理地址：该页对应的物理地址指向。</li>
+</ul>
+</blockquote>
+<p>CPU执行指令时，需要先将虚拟地址转换为主存物理地址。每个进程都有一个页表基址寄存器，存放该进程的页表首地址，然后根据虚拟地址高位部分的虚拟页号找到对应的页表项，若装入位为1,则取出物理页号，和虚拟地址低位部分的页内地址拼接，形成实际物理地址；若装入位<br>为0,则说明缺页，需要操作系统进行缺页处理。</p>
+<p>页式虚拟存储器的优点是，页面的长度固定，页表简单，调入方便。缺点是，程序的最后一页经常会有浪费，并且页不是逻辑上独立的实体，所以在处理、保护和共享都不如段式虚拟存储器方便。</p>
+<blockquote>
+<p>由地址转换过程可知，访存时先访问一次主存去査页表，再访问主存才能取得数据。如果缺页，那么还要进行页面替换、页面修改等，因此采用虚拟存储机制后，访问主存的次数更多了。依据程序执行的局部性原理，在一段时间内总是经常访问某些页时，若把这些页对应的页表项存放在高速缓冲器组成的快表(TLB)中，则可以明显提高效率。相应地把放在主存中的页表称为慢表(Page)。在地址转换时，首先査找快表，若命中，则无须访问主存中的页表。</p>
+</blockquote>
+<p><strong>段式虚拟存储器</strong></p>
+<p>段式虚拟存储器中的段是按程序的逻辑结构划分的，各个段的长度因程序而异。</p>
+<p>把虚拟地址分为两部分：段号和段内地址。虚拟地址到实地址之间的变换是由段表来实现的。</p>
+<blockquote>
+<p>段表</p>
+<p>是程序的逻辑段和在主存中存放位置的对照表。段表的每行记录与某个段对应的段号、装入位、段起点和段长等信息。由于段的长度可变，所以段表中要给出各段的起始地址与段的长度。</p>
+</blockquote>
+<p>段式虚拟存储器的优点是，段的分界与程序的自然分界相对应，因而具有逻辑独立性，使得它易于编译、管理、修改和保护也便于多道程序的共享；</p>
+<p>缺点是因为段长度可变，分配空间不便，容易在段间留下碎片，不好利用，造成浪费。</p>
+<hr>
+<p><strong>段页式虚拟存储器</strong></p>
+<p>把程序按逻辑结构分段，每段再划分为固定大小的页，主存空间也划分为大小相等的页，程序对主存的调入、调出仍以页为基本传送单位，这样的虚拟存储器称为段页式虚拟存储器。</p>
+<p>在段页式虚拟存储器中，每个程序对应一个段表，每段对应一个页表，段的长度必须是页长的整数倍，段的起点必须是某一页的起点。</p>
+<p>虚地址分为段号、段内页号、页内地址三部分。CPU根据虚地址访存时，首先根据段号得到段表地址；然后从段表中取出该段的页表起始地址，与虚地址段内页号合成，得到页表地址；最后从页表中取出实页号，与页内地址拼接形成主存实地址。</p>
+<p>段页式虚拟存储器的优点是，兼具页式和段式虚拟存储器的优点，可以按段实现共享和保护抑。缺点是在地址变换过程中需要两次查表，系统开销较大。</p>
+<hr>
+<p><strong>虚拟存储器 与 Cache 的比较</strong>：</p>
+<p>相同处：</p>
+<ul>
+<li>最终目标都是为了提高系统性能，两者都有容量、速度、价格的梯度。</li>
+<li>都把数据划分为小信息块，并作为基本的传递单位，虚存系统的信息块更大</li>
+<li>都有地址的映射、替换算法、更新策略等问题。</li>
+<li>依据程序的局部性原理应用“快速缓存的思想”，将活跃的数据放在相对高速的部件中</li>
+</ul>
+<p>不同处：</p>
+<ul>
+<li><p>Cache主要解决系统速度，而虚拟存储器是为了解决主存容量。</p>
+</li>
+<li><p>Cache全由硬件实现，是硬件存储器，对所有程序员透明。</p>
+<p>而虚拟存储器由OS和硬件共同实现，是逻辑上的存储器，对系统程序员不透明，但对应用程序员透明。</p>
+</li>
+<li><p>对于不命中性能影响，因为CPU的速度约为 Cache的10倍，主存的速度为硬盘的100倍以上，因此虛拟存储器系统不命中时对系统性能影响更大。</p>
+</li>
+<li><p>CPU与 Cache和主存都建立了直接访问的通路，而辅存与CPU没有直接通路。也就是说在 Cache不命中时主存能和CPU直接通信，同时将数据调入 Cache；而虚拟存储器系统不命中时，只能先由硬盘调入主存，而不能直接和CPU通信。</p>
+</li>
+</ul>
+<h1 id="四、指令系统"><a href="#四、指令系统" class="headerlink" title="四、指令系统"></a>四、指令系统</h1><h2 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h2><blockquote>
+<p>如何用二进制码表示指令</p>
+</blockquote>
+<p>指令（机器指令）是指示计算机执行某种操作的命令。一条指令就是机器语言的一个语句，是一组有意义的二进制代码。</p>
+<p>指令系统：一台计算机的所有指令的集合，也称指令集。指令系统是计算机的主要属性，位于硬件和软件的中间。</p>
+<p><strong>格式： 操作码字段 + 地址码字段</strong></p>
+<ul>
+<li><p>操作码：</p>
+<p>指出指令中该指令应该执行什么性质的操作以及具有何种功能。</p>
+<p>操作码是识别指令、了解指令功能 以及 区分操作数地址内容的组成和使用方法等的关键信息。例如，指出是算术加运算还是算术减运算，是程序转移还是返回操作。</p>
+</li>
+<li><p>地址码：</p>
+<p>给出被操作的信息（指令或数据）的地址，包括参加运算的一个或多个操作数所在的地址、运算结果的保存地址、程序的转移地址、被调用的子程序的入口地址等。</p>
+</li>
+</ul>
+<p>指令长度：指一条指令中所包含的二进制代码的位数。</p>
+<ul>
+<li><p>定长操作码指令格式</p>
+<p>在指令字的最高位 分配固定的若干位（定长）表示操作码。</p>
+<p>定长操作码有利于简化计算机硬件设计，提高指令译码和识别速度。</p>
+</li>
+<li><p>拓展操作码指令格式</p>
+<p>为了在指令字长有限的前提下仍保持比较丰富的指令种类，可采取可变长度操作码，即操作码字段的位数不固定，且分散地放在指令字的不同位置。</p>
+<p>最常见的变长操作码方法是 拓展操作码，它使操作码的长度随地址码的减少而增加。</p>
+<p>会增加指令译码和分析的难度，使控制器的设计复杂化。</p>
+</li>
+</ul>
+<p>根据指令中的 <strong>地址码的数目不同</strong>，可以将指令分为以下几种格式：</p>
+<ul>
+<li><p>零地址指令： OP</p>
+<p>只给出操作码OP，没有显式地址。这种指令只有两种可能：</p>
+<ul>
+<li>不需要操作数的指令，如空操作指令、停机指令、关中断指令等。</li>
+<li>零地址的运算类指令仅用在堆栈计算机中。通常参与运算的两个操作数隐含地从栈顶和次栈顶弹出，送到运算器进行运算，运算结果再隐含地压入堆栈。</li>
+</ul>
+</li>
+<li><p>一地址指令： OP + A<del>1</del></p>
+<ul>
+<li><p>只有目的操作数的单操作数指令，按A<del>1</del>地址读取操作数，进行OP操作后，结果存回原地址。</p>
+<p>指令含义：OP(A<del>1</del>)→A<del>1</del><br>如操作码含义是加1、减1、求反、求补等。</p>
+</li>
+<li><p>隐含约定目的地址的双操作数指令，按指令地址A<del>1</del>可读取源操作数，指令可隐含约定另一个操作数由ACC（累加器）提供，运算结果也将存放在AC中。<br>指令含义：(ACC)OP(A<del>1</del>)→ACC</p>
+</li>
+</ul>
+<blockquote>
+<p>若指令字长为32位，操作码占8位，1个地址码字段占24位，则指令操作数的直接寻址范围为2^24^&#x3D;16M。</p>
+</blockquote>
+</li>
+<li><p>二地址指令： OP + A<del>1</del> + A<del>2</del></p>
+<p>指令含义：(A<del>1</del>)OP(A<del>2</del>)→A<del>1</del></p>
+<p>对于常用的算术和逻辑运算指令，往往要求使用两个操作数，需分别给出目的操作数和源操作数的地址，其中目的操作数地址还用于保存本次的运算结果。</p>
+<blockquote>
+<p>若指令字长为32位，操作码占8位，两个地址码字段各占12位，则指令操作数的直接寻址范围为2^12^&#x3D;4K</p>
+</blockquote>
+</li>
+<li><p>三地址指令： OP + A<del>1</del> + A<del>2</del> + A<del>3</del>(结果) </p>
+<p>指令含义：(A<del>1</del>)OP(A<del>2</del>)→A<del>3</del></p>
+<blockquote>
+<p>若指令字长为32位，操作码占8位，3个地址码字段各占8位，则指令操作数的直接寻址范围为28&#x3D;256。</p>
+<p>若地址字段均为主存地址，则完成一条三地址需要4次访问存储器（取指令1次，取两个操作数2次，存放结果1次)</p>
+</blockquote>
+</li>
+<li><p>四地址指令： OP + A<del>1</del> + A<del>2</del> + A<del>3</del>(结果) + A<del>4</del>(下址)</p>
+<p>指令含义：(A<del>1</del>)OP(A<del>2</del>)→A<del>3</del>，A<del>4</del>&#x3D;下一条将要执行指令的地址。</p>
+<blockquote>
+<p>若指令字长为32位，操作码占8位，4个地址码字段各占6位，则指令操作数的直接寻址<br>范围为2^6^&#x3D;64</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<p><strong>指令的功能分类：</strong></p>
+<ul>
+<li><p><strong>数据传送</strong></p>
+<p>传送指令通常有 寄存器之间的传送(MOV)、从内存单元读取数据到CPU寄存器(LOAD)、从CPU寄存器写数据到内存单元 (STORE)等。</p>
+</li>
+<li><p><strong>算术和逻辑运算</strong></p>
+<p>这类指令主要有加(ADD)、减(SUB)、比较(CMP)、乘(MUL)、除(DIV)、加1 (INC)、减1(DEC)、与(AND)、或(OR)、取反(NOT)、异或(XOR)等。</p>
+</li>
+<li><p><strong>移位操作</strong></p>
+<p>移位指令主要有算法移位、逻辑移位、循环移位等。</p>
+</li>
+<li><p><strong>转移操作</strong></p>
+<p>转移指令主要有无条件转移(JMP)、条件转移(BRANCH)、调用(CALL)、返回(RET)、陷阱(TRAP)等。无条件转移指令在任何情况下都执行转移操作，而条件转移指令仅在特定条件满足时才执行转移操作，转移条件一般是某个标志位的值，或两个或两个以上的标志位组合。</p>
+<p>调用指令和转移指令的区别：执行调用指令时必须保存下一条指令的地址（返回地址），当子程序执行结束时，根据返回地址返回到主程序继续执行；而转移指令则不返回执行。</p>
+</li>
+<li><p><strong>输入输出操作</strong></p>
+<p>这类指令用于完成CPU与外部设备交换数据或传送控制命令及状态信息。</p>
+</li>
+</ul>
+<h2 id="指令寻址方式"><a href="#指令寻址方式" class="headerlink" title="指令寻址方式"></a>指令寻址方式</h2><blockquote>
+<p>给出下一条指令的地址，给出要操作的对象的地址</p>
+</blockquote>
+<p>寻址方式就是寻找 指令或操作数 有效地址的方式，寻址方式分为 指令寻址 和 数据寻址 两大类。</p>
+<blockquote>
+<p>指令中的地址码字段并不代表操作数的真实地址，这种地址称为形式地址(A)。形式地址结合寻址方式，可以计算出操作数在存储器中的真实地址，也叫有效地址(EA)。</p>
+</blockquote>
+<ul>
+<li><p><strong>指令寻址</strong></p>
+<ul>
+<li><p>顺序寻址：</p>
+<p>通过程序计数器(PC) 加1（1个指令字长），自动形成下一条指令的地址。</p>
+</li>
+<li><p>跳跃寻址：</p>
+<p>通过转移指令实现。跳跃是指下一条指令的地址码不是由程序计数器给出，而是由本指令给出下一条指令地址的计算方式。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>数据寻址</strong></p>
+<p>在指令中表示 一个操作数的地址。由于数据寻址的方式较多，为加以区分，通常在指令字中设一个字段，用来表示属于哪种寻址方式，则指令格式变为：操作码 + 寻址特征 + 形式地址；</p>
+</li>
+</ul>
+<hr>
+<p><strong>常见的数据寻址方式：</strong></p>
+<ul>
+<li><p><strong>隐含</strong>寻址</p>
+<p>不明显给出操作数的地址。如：单地址指令就 不指出第二操作数的地址，而规定累加器(ACC)作为第二操作数地址。</p>
+<p>优点：利于缩短指令字长；缺点：需增加存储操作数或隐含地址的硬件。</p>
+</li>
+<li><p><strong>立即数</strong>寻址</p>
+<p>地址字段 指出的不是操作数的地址，而是操作数本身，又称立即数。</p>
+<p>优点：指令在执行阶段不访问主存，指令执行时间最短；缺点：地址字段的位数限制了立即数的范围。</p>
+</li>
+<li><p><strong>直接</strong>寻址</p>
+<p>地址字段 就是操作数的真实地址。</p>
+<p>优点：简单，只访问依次主存；缺点：地址字段限制了寻址范围，且操作数的地址不易修改。</p>
+</li>
+<li><p><strong>间接</strong>寻址</p>
+<p>相对直接寻址，指令的地址字段 给出的形式地址是操作数的有效地址所在的存储单元的地址，即 操作数地址的地址。</p>
+<p>优点：扩大了寻址范围，便于编制程序（方便子程序返回）；缺点：指令在执行阶段要多次访存。——由于访问速度过慢，所以问到扩大寻址范围时，通常指的是 寄存器间接寻址。</p>
+</li>
+<li><p><strong>寄存器</strong>寻址</p>
+<p>在指令中直接给出操作数所在的寄存器编号。即EA&#x3D;R<del>i</del>，操作数存放在R<del>i</del>所指的寄存器中。</p>
+<p>优点：不用访存，执行速度快；缺点：寄存器数量少，数量有限。</p>
+</li>
+<li><p><strong>寄存器间接</strong>寻址</p>
+<p>寄存器间接寻址是指在寄存器 R<del>i</del> 中给出的不是一个操作数，而是操作数所在主存单元的地址，即EA&#x3D;(R<del>i</del>)。</p>
+<p>比一般间接寻址快，但因为操作数在主存中，仍需访问一次主存。</p>
+</li>
+<li><p><strong>相对</strong>寻址</p>
+<p>把程序计数器(PC)的内容加上指令中的形式地址A而形成的操作数的有效地址，即EA &#x3D; (PA) + A，其中A是相对与当前指令的位移量。</p>
+<p>优点：操作数的地址不是固定的，而是随PC值的变化而变化，且与指令地址总是相差一个固定值，便于程序浮动。</p>
+</li>
+<li><p><strong>基址</strong>寻址</p>
+<p>基址寻址是指将CPU中基址寄存器(BR) 的内容加上指令格式中的形式地址A而形成操作数的有效地址，即EA&#x3D;(BR)+A。其中基址寄存器既可采用专用寄存器，又可采用通用寄存器。</p>
+<blockquote>
+<p>基址寄存器是面向操作系统的，其内容由操作系统或管理程序确定，主要解决程序逻辑空间 与 物理空间的无关性。</p>
+</blockquote>
+<p>优点：可扩大寻址范围（基址寄存器的位数大于形式地址A的位数），用户不必考虑自己的程序存于主存的哪个空间区域，所以也有利于多道程序设计，并可用于编制浮动程序，但偏移量（A）的位数较短。</p>
+</li>
+<li><p><strong>变址</strong>寻址</p>
+<p>变址寻址是指有效地址EA 等于指令字中的形式地址A与变址寄存器IX的内容之和，即 EA&#x3D;(IX)+A，其中 IX为变址寄存器（专用），也可用通用寄存器作为变址寄存器。</p>
+<blockquote>
+<p>变址寄存器是面向用户的，在程序执行过程中，变址寄存器的内容可由用户改变（作为偏移量），形式地址A不变（作为基地址）。</p>
+</blockquote>
+<p>优点：可扩大寻址范围（变址寄存器的位数大于形式地址A的位数）；在数组处理过程中，可设定A为数组的首地址，不断改变变址寄存器IX的内容，便可很容易形成数组中任一数据的地址，特别适合编制循环程序。偏移量(变址寄存器IX) 的位数足以表示整个存储空间。</p>
+</li>
+<li><p><strong>堆栈</strong>寻址</p>
+<p>堆栈是存储器（或专用寄存器组）中一块特定的、按后进先出(LIFO)原则管理的存储区，该存储区中读&#x2F;写单元的地址是用一个特定的寄存器给出的，该寄存器称为堆機指针(SP)。</p>
+<p>堆栈可分为硬堆栈与软堆栈两种。</p>
+<p>硬堆栈：指寄存器堆栈，成本高，不适合做大容量的堆栈；</p>
+<p>软堆栈：从主存中划出一段区域 用来做堆栈，合算，也是最常用的。</p>
+</li>
+</ul>
+<h2 id="CISC和RISC"><a href="#CISC和RISC" class="headerlink" title="CISC和RISC"></a>CISC和RISC</h2><blockquote>
+<p>两种设计方向</p>
+</blockquote>
+<p><strong>CISC——复杂指令系统计算机</strong>——增强原有指令的功能，设置更为复杂的新指令实现软件功能的硬化；如采用X86架构的计算机。</p>
+<p><strong>RISC——精简指令系统计算机</strong>——减少指令种类和简化指令功能，提供指令的指令速度；如ARM，MIPS架构的计算机。</p>
+<hr>
+<p>CISC的主要特点如下：</p>
+<ol>
+<li>指令系统复杂庞大，指令数目一般为200条以上。</li>
+<li>指令的长度不固定，指令格式多，寻址方式多。</li>
+<li>可以访存的指令不受限制。</li>
+<li>各种指令使用频度相差很大。</li>
+<li>各种指令执行时间相差很大，大多数指令需多个时钟周期才能完成。</li>
+<li>控制器大多数采用微程序控制。有些指令非常复杂，以至于无法采用硬连线控制。</li>
+<li>难以用优化编译生成高效的目标代码程序。</li>
+</ol>
+<p>RISC的中心思想是要求指令系统简化，尽量使用寄存器-寄存器操作指令，指令格式力求一致。RISC的主要特点如下：</p>
+<ol>
+<li>选取使用频率最高的一些简单指令，复杂指令的功能由简单指令的组合来实现。</li>
+<li>指令长度固定，指令格式种类少，寻址方式种类少。</li>
+<li>只有 Load&#x2F;Store（取数存数）指令访存，其余指令的操作都在寄存器之间进行。</li>
+<li>CPU中通用寄存器的数量相当多。</li>
+<li>RISC一定采用指令流水线技术，大部分指令在一个时钟周期内完成。</li>
+<li>以硬布线控制为主，不用或少用微程序控制</li>
+<li>特别重视编译优化工作，以减少程序执行时间</li>
+</ol>
+<blockquote>
+<p>值得注意的是，从指令系统兼容性看，CISC大多能实现软件兼容，即高档机包含了低档机的全部指令，并可加以扩充。但RISC简化了指令系统，指令条数少，格式也不同于老机器，因此大多数RISC机不能与老机器兼容。</p>
+<p>虽然RISC具有更强的实用性，看起来应该是未来处理器的发展方向。但事实上，早期很多软件都是根据CISC设计的，单纯的RISC将无法兼容。此外，现代CISC结构的CPU已经融合了很多RISC的成分，其性能差距已经越来越小。CISC可以提供更多的功能，这是程序设计所需要的。</p>
+</blockquote>
+<h1 id="五、中央处理器"><a href="#五、中央处理器" class="headerlink" title="五、中央处理器"></a>五、中央处理器</h1><h2 id="CPU的功能和结构"><a href="#CPU的功能和结构" class="headerlink" title="CPU的功能和结构"></a>CPU的功能和结构</h2><p>中央处理器(CPU)由运算器和控制器组成。</p>
+<ul>
+<li>控制器：负责协调并控制计算机各部件执行程序的指令序列，包括取指令、分析指令和执行指令；</li>
+<li>运算器：对数据进行加工。</li>
+</ul>
+<p><strong>CPU功能：</strong></p>
+<ul>
+<li>指令控制。完成取指令、分析指令和执行指令的操作，即程序的顺序控制</li>
+<li>操作控制。一条指令的功能往往由若干操作信号的组合来实现。CPU管理并产生由内存取出的每条指令的操作信号，把各种操作信号送往相应的部件，从而控制这些部件按指令的要求进行动作。</li>
+<li>时间控制。对各种操作加以时间上的控制。时间控制要为每条指令按时间顺序提供应有的控制信号。</li>
+<li>数据加工。对数据进行算术和逻辑运算。</li>
+<li>中断处理。对计算机运行过程中出现的异常情况和特殊请求进行处理。</li>
+</ul>
+<hr>
+<p><strong>运算器组成：</strong></p>
+<ol>
+<li><p>**算术逻辑单元(ALU)**。主要功能是进行算术&#x2F;逻辑运算；</p>
+</li>
+<li><p><strong>暂存寄存器</strong>。用于暂存从主存读来的数据，该数据不能存放在通用寄存器中，否则会破坏其原有内容。暂存寄存器对应用程序员是透明的。</p>
+</li>
+<li><p>**累加寄存器(ACC)**。它是一个通用寄存器，用于暂时存放ALU运算的结果信息，可以作为加法运算的一个输入端。</p>
+</li>
+<li><p><strong>通用寄存器组</strong>。如AX、BX、CX、DX、SP等，用于存放操作数（包括源操作数、目的操作数及中间结果）和各种地址信息等。SP是堆栈指针，用于指示栈顶的地址。</p>
+</li>
+<li><p>**程序状态字寄存器(PAW)**。保留由算术逻辑运算指令或测试指令的结果而建立的各种状态信息，如溢出标志(OF)、符号标志(SF)、零标志(ZF)、进位标志(CF)等。PSW中的这些位参与并决定微操作的形成。</p>
+</li>
+<li><p><strong>移位器</strong>。对操作数或运算结果进行移位运算。</p>
+</li>
+<li><p>**计数器(CT)**。控制乘除运算的操作步数。</p>
+</li>
+</ol>
+<p><strong>控制器组成：</strong></p>
+<ol>
+<li>**程序计数器(PC)**。用于指出下一条指令在主存中的存放地址。CPU根据PC的内容去主存中取指令。因程序中指令通常是顺序执行的，所以PC有自增功能。</li>
+<li>**指令寄存器(IR)**。用于保存当前正在执行的那条指令。</li>
+<li><strong>指令译码器</strong>。仅对操作码字段进行译码，向控制器提供特定的操作信号。</li>
+<li>**存储器地址寄存器(MAR)**。用于存放要访问的主存单元的地址。</li>
+<li>**存储器数据寄存器(MDR)**。用于存放向主存写入的信息或从主存读出的信息。</li>
+<li><strong>时序系统</strong>。用于产生各种时序信号，它们都由统一时钟 ( CLOCK ) 分频得到。</li>
+<li><strong>微操作信号发生器</strong>。根据R的内容（指令）、PSW的内容（状态信息）及时序信号，产生控制整个计算机系统所需的各种控制信号，其结构有组合逻辑型和存储逻辑型两种。</li>
+</ol>
+<p><img src="D:/Note/Typora_picture/image-20220125162850050.png" alt="image-20220125162850050"></p>
+<h2 id="指令执行过程"><a href="#指令执行过程" class="headerlink" title="指令执行过程"></a>指令执行过程</h2><blockquote>
+<p>指令周期、数据流、指令执行方案</p>
+</blockquote>
+<p><strong>指令周期：</strong>CPU从主存中取出并执行一条指令的时间。（不同指令的指令周期可能不同）</p>
+<p>指令周期 常用若干机器周期来表示，一个机器周期又包含若干时钟周期。</p>
+<p>完整的指令周期组成：取指周期 + 间址周期 + 执行周期 + 中断周期</p>
+<blockquote>
+<p>这4个工作周期都有CPU访存操作，只是访存的目的不同。</p>
+<p>取指周期是为了取指令，间址周期是为了取有效地址，执行周期是为了取操作数，中断周期是为了保存程序断点。</p>
+</blockquote>
+<p>为了区别不同的工作周期，在CPU内设置了4个标志触发器：FE， IND， EX， INT，分别对应取指，间址，执行，中断周期，并以“1”状态表示有效。</p>
+<hr>
+<p><strong>数据流</strong></p>
+<p>数据流是根据指令要求依次访问的数据序列。</p>
+<p>取指周期的数据流：</p>
+<p><img src="D:/Note/Typora_picture/image-20220111202414358.png" alt="image-20220111202414358"></p>
+<p>间址周期的数据流：</p>
+<p><img src="D:/Note/Typora_picture/image-20220111202549519.png" alt="image-20220111202549519"></p>
+<p>执行周期的任务是具体的，没有统一的数据流向。</p>
+<p>中断周期的数据流：</p>
+<p><img src="D:/Note/Typora_picture/image-20220111202701385.png" alt="image-20220111202701385"></p>
+<hr>
+<p><strong>指令执行方案</strong></p>
+<p>一个指令周期通常要包括几个时间段（执行步骤），每个步骤完成指令的一部分功能，几个依次执行的步骤完成这条指令的全部功能。</p>
+<p>出于性能和硬件成本等考虑，可以选用3种不同的方案来安排指令的执行步骤。</p>
+<ul>
+<li><p><strong>单指令周期</strong><br>对所有指令都选用相同的执行时间来完成，称为单指令周期方案。</p>
+<p>此时每条指令都在固定的时钟周期内完成，指令之间串行执行，即下一条指令只能在前一条指令执行结束后才能启动。因此，指令周期取决于执行时间最长的指令的执行时间。对于那些本来可以在更短时间内<br>完成的指令，要使用这个较长的周期来完成，会降低整个系统的运行速度。</p>
+</li>
+<li><p><strong>多指令周期</strong><br>对不同类型的指令选用不同的执行步骤来完成，称为多指令周期方案。</p>
+<p>指令之间串行执行，即下一条指令只能在前一条指令执行结束后才能启动。但可选用不同个数的时钟周期来L完成不同指令的执行过程，指令需要几个周期就为其分配几个周期，而不再要求所有指令占用相同的执行时间。</p>
+</li>
+<li><p><strong>流水线方案</strong><br>指令之间可以并行执行的方案，称为流水线方案，其追求的目标是力争在每个时钟脉冲周期完成一条指令的执行过程（只在理想情况下才能达到该效果）。</p>
+<p>这种方案通过在每个时钟周期启动一条指令，尽量让多条指令同时运行，但各自处在不同的执行步骤中。</p>
+</li>
+</ul>
+<h2 id="数据通路"><a href="#数据通路" class="headerlink" title="数据通路"></a>数据通路</h2><blockquote>
+<p>设置部件间的连接路径，描述指令执行过程中信号和数据在这些路径上的传输</p>
+</blockquote>
+<p><strong>数据通路：指在功能部件之间传送的路径。</strong>这些部件称为<strong>数据通路部件</strong>，如ALU，通用寄存器，状态寄存器，异常和中断处理逻辑等。其中专门进行数据运算的部件称为 <strong>执行部件&#x2F; 功能部件</strong>。</p>
+<p>数据通路描述了信息从什么地方开始，中间经过哪个寄存器或多路开关，最后传送到哪个寄存器，这些都需要加以控制。</p>
+<p><strong>数据通路的基本结构：</strong></p>
+<ul>
+<li><p>CPU内部单总线方式</p>
+</li>
+<li><p>CPU内部多总线方式</p>
+<p>将所有寄存器的输入端和输出端都连接到多条公共通路上。相比之下，单总线中一个时钟内只允许传一个数据，指令执行效率很低，因此采用多总线方式，同时在多个总线上传送不同的数据，提高效率。</p>
+</li>
+<li><p>专用数据通路方式</p>
+<p>根据指令执行过程中的数据和地址的流动方向安排连接线路，避免使用共享的总线，性能较高，但硬件量大。</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：</p>
+<p>内部总线是指同一部件之间的总线，如CPU内部连接各寄存器及运算部件之间的总线；</p>
+<p>系统总线是指同一台计算机系统的各部件之间互相连接的总线，如CPU、内存、通道和各类IO接口之间相互连接的总线。</p>
+</blockquote>
+<h2 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h2><blockquote>
+<p>控制器怎么指挥整个系统的工作？</p>
+</blockquote>
+<p>控制器是计算机系统的指挥中心，主要功能有：</p>
+<ol>
+<li>从主存中取出一条指令，并指出下一条指令在主存中的位置。</li>
+<li>对指令进行译码或测试，产生相应的操作控制信号，以便启动规定的动作。</li>
+<li>指挥并控制CPU、主存、输入和输出设备之间的数据流动方向。</li>
+</ol>
+<p>根据控制器产生微操作控制信号的方式的不同，控制器可分为<u>硬布线控制器</u>和<u>微程序控制器</u>，两类控制器中的PC和IR是相同的，但确定和表示指令执行步骤的办法以及给出控制各部件运行所需要的控制信号的方案是不同的。</p>
+<hr>
+<p><strong>硬布线控制器</strong></p>
+<p>硬布线控制器的基本原理是根据指令的要求、当前的时序及外部和内部的状态，按时间的顺序发送一系列微操作控制信号。</p>
+<p>它由复杂的组合逻辑门电路和一些触发器构成，因此又称组合逻辑控制器。(主要涉及电路设计)</p>
+<hr>
+<p><strong>微程序控制器</strong></p>
+<p>将每条机器指令编写成一个微程序，这些微程序存到一个控制存储器中，可以通过寻址找到每个微程序中的微指令。目前，大多数计算机都采用微程序设计技术。</p>
+<blockquote>
+<p>每个微程序包含若干微指令，每条微指令对应一个或几个微操作命令。</p>
+</blockquote>
+<p>基本术语：</p>
+<ul>
+<li><p><strong>微命令、微操作：</strong></p>
+<p>一条机器指令可以分解成一个微操作序列；微操作是计算机最基本的、不可再分的操作。</p>
+<p>将控制部件向执行部件发出的各种控制命令称为微命令，它是构成控制序列的最小单位。例如：打开或关闭某个控制门的电位信号。</p>
+<p><strong>微命令和微操作是一一对应的</strong>。微命令是微操作的控制信号，微操作是微命令的执行过程。</p>
+</li>
+<li><p><strong>微指令、微周期：</strong></p>
+<p>微指令是若干微命令的集合。存放微指令的控制存储器的单元地址称为微地址。</p>
+<p>一条微指令至少包含两部分：</p>
+<ul>
+<li>操作控制字段（微操作码字段），用于生产某一步操作所需的各种操作控制信号。</li>
+<li>顺序控制字段（微地址码字段），用于控制产生下一条要执行的微指令地址。</li>
+</ul>
+<p>微周期是指 从控制存储器中读取一条微指令并执行相应的微操作所需的时间。</p>
+</li>
+<li><p><strong>主存储器、控制存储器：</strong></p>
+<p>主存储器用于存放程序和数据，在CPU外部，用RAM实现；</p>
+<p>控制存储器(CM)用于存放微程序，在CPU内部，用 只读存储器ROM 实现。</p>
+</li>
+<li><p><strong>程序与微程序：</strong></p>
+<p>程序是指令的有序集合，用于完成特定的功能；</p>
+<p>微程序是微指令的有序集合，用于描述机器指令，一条指令的功能由一段微程序来思想。</p>
+<blockquote>
+<p>微程序实际上是机器指令的实时解释器，一般是事先编制好并存放在控制存储器中，对外一般透明</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>组成：</strong></p>
+<ul>
+<li>**控制存储器(CM)**：核心部件，用于存放各指令对应的微程序；</li>
+<li><strong>微指令寄存器</strong>：存放从CM中取出的微指令，它的位数同微指令字长相等。</li>
+<li><strong>微地址形成部件</strong>：用于产生初始微地址和后继微地址，保证微指令的连续执行；</li>
+<li><strong>微地址寄存器</strong>：接收微地址形成部件送来的微地址</li>
+</ul>
+<p><img src="D:/Note/Typora_picture/image-20220220104112886.png" alt="image-20220220104112886"></p>
+<p><strong>工作过程：</strong></p>
+<p>实际上就是在微程序控制器的控制下计算机执行机器指令的过程，这个过程可以描述如下：</p>
+<p>① 执行取微指令公共操作。具体的执行是：在机器开始运行时，自动将取指微程序的入口地址送入CMAR,并从CM中读出相应的微指令送入CMDR。取指微程序的入口地址般为CM的0号单元，当取指微程序执行完后，从主存中取出的机器指令就已存入指令寄存器中。</p>
+<p>② 由机器指令的操作码字段通过微地址形成部件产生该机器指令所对应的微程序的入口地址，并送入CMAR.</p>
+<p>③ 从CM中逐条取出对应的微指令并执行。</p>
+<p>④ 执行完对应于一条机器指令的一个微程序后，又回到取指微程序的入口地址，继续第①步，以完成取下一条机器指令的公共操作</p>
+<hr>
+<p>注意区分一些寄存器的不同：</p>
+<ul>
+<li>地址寄存器(MAR)：用于存放主存的读&#x2F;写地址；</li>
+<li>微地址寄存器(CMAR)：用于存放控制存储器的读&#x2F;写微指令的地址；</li>
+<li>指令寄存器(IR)：用于存放从主存中读出的指令；</li>
+<li>微指令寄存器(CMDR)：用于存放从控制存储器中读出的微指令。</li>
+</ul>
+<hr>
+<p><strong>微指令的格式</strong></p>
+<p>水平型微指令：一次能定义并执行多个并行操作</p>
+<p><img src="D:/Note/Typora_picture/image-20220220104430559.png" alt="image-20220220104430559"></p>
+<p>垂直型微指令：类似机器指令操作码的方式，由微操作码字段规定微指令的功能。</p>
+<p><img src="D:/Note/Typora_picture/image-20220220104442016.png" alt="image-20220220104442016"></p>
+<hr>
+<p><strong>微指令的编码方式</strong></p>
+<ul>
+<li><p>直接编码方式</p>
+<p>n个微命令需要微指令的操作字段有n位，虽然简单，速度快，但对控制存储器容量要求极大。</p>
+</li>
+<li><p>字段直接编码方式</p>
+<p>将微指令的微命令字段分成若干字段；  把互斥性微命令组合在同一字段中，把相容性微命令组合在不同字段中；  每个字段独立编码，每种编码代表一个微命令且各字段编码含义单独定义，与其他字段无关，这就是字段直接编码方式。</p>
+<p>优点：可以缩短微指令字长。</p>
+<p>缺点：需经过译码再发出微命令，因此比直接编码方式慢。</p>
+</li>
+</ul>
+<hr>
+<p><strong>微指令的地址形成方式</strong></p>
+<ol>
+<li>由微指令的 <strong>下地址字段</strong> 指出（称为断定方式）；</li>
+<li>根据机器指令的 <strong>操作码</strong> 形成：当机器指令取至指令寄存器后，微指令的地址由操作码经微地址形成部件形成。</li>
+</ol>
+<hr>
+<p><img src="D:/Note/Typora_picture/image-20220220105619061.png" alt="image-20220220105619061"></p>
+<h2 id="指令流水线"><a href="#指令流水线" class="headerlink" title="指令流水线"></a>指令流水线</h2><p>一条指令的执行过程：<strong>取指，分析，执行</strong></p>
+<p><strong>取指</strong>：根据 PC内容访问主存储器，取出一条指令送到 IR 中。<br><strong>分析</strong>：对指令操作码进行译码，按照给定的寻址方式和地址字段中的内容形成操作数的有效地址EA,并从有效地址EA中取出操作数。<br><strong>执行</strong>：根据操作码字段，完成指令规定的功能，即把运算结果写到通用寄存器或主存中</p>
+<p><strong>指令流水线</strong>：充分利用各功能部件。</p>
+<p><img src="D:/Note/Typora_picture/image-20220220113352077.png" alt="image-20220220113352077"></p>
+<p><img src="D:/Note/Typora_picture/image-20220220113548916.png" alt="image-20220220113548916"></p>
+<hr>
+<p>性能指标：吞吐率TP，加速比S，效率E</p>
+<p>影响因素：结构相关（资源冲突），数据相关（数据冲突），控制相关（控制冲突）</p>
+<p>分类：</p>
+<p>多发技术：</p>
+<h1 id="六、总线"><a href="#六、总线" class="headerlink" title="六、总线"></a>六、总线</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><u>总线是一组能为多个部件<strong>分时共享</strong>的<strong>公共</strong>信息传送线路。</u></p>
+<p>共享：是指总线上可以挂接多个部件，各个部件之间互相交换的信息都可以通过这组线路共享。<br>分时：是指同一时刻只允许有一个部件向总线发送信息，如果系统中有多个部件，则它们只能分时地向总线发送信息。</p>
+<blockquote>
+<p>为什么使用总线？</p>
+<p>早期计算机外部设备少时大多采用分散连接方式，不易实现随时增减外部设备。<br>为了更好地解决&#x2F;Oo设备和主机之间连接的灵活性问题，计算机的结构从分散连接发展为总线连接。</p>
+</blockquote>
+<p><strong>总线的特性：</strong></p>
+<p>机械特性：尺寸、形状、管脚数、排列顺序；<br>电气特性：传输方向和有效的电平范围；<br>功能特性：每根传输线的功能(地址、数据、控制)；<br>时间特性：信号的时序关系；</p>
+<p><strong>总线的分类：</strong></p>
+<p>按数据传输格式：串行总线，并行总线；</p>
+<p><img src="D:/Note/Typora_picture/image-20220220155959250.png" alt="image-20220220155959250"></p>
+<p>按总线功能（连接的部件）：</p>
+<ul>
+<li><p><strong>片内总线</strong>：是芯片内部的总线。它是CPU芯片内部寄存器与寄存器之间、寄存器与AU之间的公共连接线。</p>
+</li>
+<li><p><strong>系统总线</strong>：是各功能部件（CPU，主存，I&#x2F;O接口）之间 相互连接的总线。可分为3类：数据总线，地址总线，控制总线；</p>
+<p><img src="D:/Note/Typora_picture/image-20220220152454394.png" alt="image-20220220152454394"></p>
+</li>
+<li><p>通信总线：是计算机系统之间 或 计算机与其他系统之间信息传送的总线。也称外部总线。</p>
+</li>
+</ul>
+<p>按时序控制方式：同步总线，异步总线；</p>
+<hr>
+<p>总线的结构：</p>
+<ul>
+<li><p>单总线结构： </p>
+<p>CPU、主存、IO设备(通过IO接口) 都连接在一组总线上，允许IO设备之间、I&#x2F;O设备和CPU之间或IO设备与主存之间直接交换信。<br>优点：结构简单，成本低，易于接入新的设备。<br>缺点：带宽低、负载重，多个部件只能争用唯一的总线，且不支持并发传送操作</p>
+<p><img src="D:/Note/Typora_picture/image-20220220152807606.png" alt="image-20220220152807606"></p>
+</li>
+<li><p>双总线结构：</p>
+<p>有两条总线，一条是主存总线，用于CPU、主存和通道之间进行数据传送；另一条是 I&#x2F;O总线，用于多个外部设备与通道之间进行数据传送。<br>优点：将较低速的 I&#x2F;O设备从单总线上分离出来，实现存储器总线和 I&#x2F;O总线分离。<br>缺点：需要增加通道等硬件设备。</p>
+<p><img src="D:/Note/Typora_picture/image-20220220153153326.png" alt="image-20220220153153326"></p>
+</li>
+<li><p>三总线结构：</p>
+<p>在计算机系统各部件之间采用3条各自独立的总线来构成信息通路，这3条总线分别为<strong>主存总线</strong>、<strong>I&#x2F;O总线</strong>和直接内存访问<strong>DMA总线</strong>。<br>优点：提高了 I&#x2F;O设备的性能，使其更快地响应命令，提高系统吞吐量。<br>缺点：系统工作效率较低。</p>
+<p> <img src="D:/Note/Typora_picture/image-20220220153412326.png" alt="image-20220220153412326"></p>
+</li>
+</ul>
+<hr>
+<p><strong>总线的性能指标：</strong></p>
+<ul>
+<li><p>总线的 传输周期（总线周期）：一次总线操作所需的时间（包括 申请，寻址，传输，结束），通常由若干个总线时钟周期构成。</p>
+<p><img src="D:/Note/Typora_picture/image-20220220154622584.png" alt="image-20220220154622584"></p>
+</li>
+<li><p>总线的 时钟周期：即机器的时钟周期；</p>
+</li>
+<li><p>总线的 工作频率：为总线周期的倒数；</p>
+</li>
+<li><p>总线的 时钟频率：为时钟周期的倒数；</p>
+</li>
+<li><p>总线宽度：</p>
+<p>又称为总线位宽，它是总线上同时能够传输的数据位数，通常是指数据总线的根数，如32根称为32位(bit)总线。</p>
+</li>
+<li><p>总线带宽：</p>
+<p>可理解为总线的数据传输率，即单位时间内总线上可传输数据的位数，通常用每秒钟传送信息的字节数来衡量，单位可用字节&#x2F;秒(B&#x2F;s)表示。</p>
+<p><img src="D:/Note/Typora_picture/image-20220220155133573.png" alt="image-20220220155133573"></p>
+<blockquote>
+<p>例题：</p>
+<p><img src="D:/Note/Typora_picture/image-20220220155730564.png" alt="image-20220220155730564"></p>
+</blockquote>
+</li>
+<li><p>总线复用：一种信号线在不同时间 可以传输不同的信息。</p>
+</li>
+<li><p>信号线数：地址总线，数据总线，控制总线这3种总线数的总和称为信号线数。</p>
+</li>
+</ul>
+<h2 id="仲裁"><a href="#仲裁" class="headerlink" title="仲裁"></a>仲裁</h2><blockquote>
+<p>解决多个设备争用总线的问题</p>
+</blockquote>
+<p>同一时刻<strong>只能有一个</strong>设备<strong>控制</strong>总线传输操作，另外可以<strong>有一个或多个</strong>设备从总线<strong>接收</strong>数据。</p>
+<p>将总线上所连接的各类设备按其对总线有无控制功能分为：<br><strong>主设备</strong>：获得总线控制权的设备。<br><strong>从设备</strong>：被主设备访问的设备，只能响应从主设备发来的各种总线命令。</p>
+<ul>
+<li><p>为什么要仲裁？</p>
+<p>总线作为一种共享设备，不可避免地会出现同一时刻有多个主设备竞争总线控制权的问题。</p>
+</li>
+<li><p>总线仲裁的定义：</p>
+<p>多个主设备同时竞争主线控制权时，以某种方式选择一个主设各优先获得总线控制权称为总线仲裁。</p>
+</li>
+<li><p>总线仲裁分类</p>
+<ul>
+<li><p>集中仲裁方式：</p>
+<p>链式査询方式、计数器定时查询方式、独立请求方式</p>
+</li>
+<li><p>分布仲裁方式：</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>请求总线的<strong>工作流程</strong>：</p>
+<ol>
+<li>主设备发出请求信号；</li>
+<li>若多个主设备同时要使用总线，则由总线控制器的判优、仲裁逻辑按一定的优先等级顺序确定哪主设各能使用总线；</li>
+<li>获得总线使用权的主设备开始传送数据。</li>
+</ol>
+<p><img src="D:/Note/Typora_picture/image-20220220161957124.png" alt="image-20220220161957124"></p>
+<p>链式查询：<img src="D:/Note/Typora_picture/image-20220220162329585.png" alt="image-20220220162329585"></p>
+<p>计数器定时查询：<img src="D:/Note/Typora_picture/image-20220220162516927.png" alt="image-20220220162516927"></p>
+<p>独立请求：<img src="D:/Note/Typora_picture/image-20220220162603652.png" alt="image-20220220162603652"></p>
+<h2 id="操作和定时"><a href="#操作和定时" class="headerlink" title="操作和定时"></a>操作和定时</h2><blockquote>
+<p>占用总线的一对设备如何进行数据传输</p>
+</blockquote>
+<p><strong>总线传输的四个阶段</strong>：</p>
+<ol>
+<li><p><strong>申请分配</strong>：</p>
+<p>由需要使用总线的主模块（或主设备）提出申请，经总线仲裁机构決定将下一传输周期的总线使用权授予某一申请者。也可将此阶段细分为 传输请求 和 总线仲裁 两个阶段。</p>
+</li>
+<li><p><strong>寻址</strong>：获得使用权的主模块通过总线发出本次要访问的从模块的地址及有关命令，启动参与本次传输的从模块。</p>
+</li>
+<li><p><strong>传输</strong>：主模块和从模块进行数据交换，可单向或双向进行数据传送。</p>
+</li>
+<li><p><strong>结束阶段</strong>：主模块的有关信息均从系统总线上撤除，让出总线使用权。</p>
+</li>
+</ol>
+<p><strong>总线定时</strong>：实质是一种协议或规则，用于在总线上 交换数据的双方 在时间上的配合。</p>
+<ul>
+<li><p><strong>同步通信（同步定时方式）</strong>：由 统一时钟 控制数据传送；</p>
+<blockquote>
+<p>优点：传送速度快，具有较高的传输速率；总线控制逻辑简单。<br>缺点：主从设备属于强制性同步；不能及时进行数据通信的有效性检验，可靠性较差。</p>
+<p>同步通信适用于总线长度较短及总线所接部件的存取时间比较接近的系统。</p>
+</blockquote>
+</li>
+<li><p><strong>异通信（异步定时方式）</strong>：采用应答方式，没有公共时钟标准；</p>
+<blockquote>
+<p>优点：总线周期长度可变，能保证两个工作速度相差很大的部件或设备之间可靠地进行信息交换，自动适应时间的配合。</p>
+<p>缺点：比同步控制方式稍复杂一些，速度比同步定时方式慢。</p>
+<p><img src="D:/Note/Typora_picture/image-20220220164600629.png" alt="image-20220220164600629"></p>
+</blockquote>
+</li>
+<li><p><strong>半同步通信</strong>：同步、异步结合；</p>
+<blockquote>
+<p>在统一时钟的基础上，增加一个“等待”响应信号。</p>
+</blockquote>
+</li>
+<li><p><strong>分离式通信</strong>：充分利用总线的空闲阶段。</p>
+<blockquote>
+<p>上述三种通信，在主模块发地址、命令，从模块发数据时会使用总线，当在从模块准备数据时，没有使用总线，但主模块仍会占用总线。</p>
+<p>所以分离式通信 将总线传输周期分为两个子周期：</p>
+<ul>
+<li>子周期1：主模块申请占用总线，使用完后放弃总线的使用权。</li>
+<li>子周期2：从模块申请占用总线，将各种信息送至总线上。</li>
+</ul>
+<p>特点：</p>
+<p>各模块均有权申请占用总线<br>采用同步方式通信，不等对方回答<br>各模块准备数据时，不占用总线<br>总线利用率提高</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="标准"><a href="#标准" class="headerlink" title="标准"></a>标准</h2><blockquote>
+<p>易于实现系统的模块化设计</p>
+</blockquote>
+<h1 id="七、输入输出系统"><a href="#七、输入输出系统" class="headerlink" title="七、输入输出系统"></a>七、输入输出系统</h1><h2 id="I-x2F-O接口"><a href="#I-x2F-O接口" class="headerlink" title="I&#x2F;O接口"></a>I&#x2F;O接口</h2><h2 id="I-x2F-O方式"><a href="#I-x2F-O方式" class="headerlink" title="I&#x2F;O方式"></a>I&#x2F;O方式</h2><blockquote>
+<p>程序查询方式，程序中断方式，DMA方式</p>
+</blockquote>
+<ul>
+<li><p>程序査询方式：</p>
+<p>由CPU通过程序不断查询I&#x2F;O设备是否已做好准备，从而控制I&#x2F;O设备与主机交换信息。</p>
+</li>
+<li><p>程序中断方式：</p>
+<p>只在 I&#x2F;O设备准备就绪并向CPU发出中断请求时才予以响应。</p>
+</li>
+<li><p>DMA方式：</p>
+<p>主存和 I&#x2F;O设备之间有一条直接数据通路，当主存和 I&#x2F;O设备交换信息时无须调用中断服务程序。</p>
+</li>
+<li><p>通道方式：</p>
+<p>在系统中设有通道控制部件，每个通道都挂接若干外设，主机在执行 I&#x2F;O命令时，只需启动有关通道，通道将执行通道程序，从而完成 I&#x2F;O操作。</p>
+</li>
+</ul>
+<blockquote>
+<p>程序查询方式和程序中断方式 用于 数据传输效率较低的外部设备，DMA方式和通道方式用于数据传输效率较高的设备。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" data-id="cl1ynefmf000dswtu52xqaolz" data-title="计算机组成原理" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Notes/2022/04/14/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面试相关
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Notes/2022/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9COthers/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">计算机网络</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Notes/archives/2022/04/">April 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/Notes/2022/04/14/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/">面试相关</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Notes/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Notes/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/Notes/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/Notes/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/Notes/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
