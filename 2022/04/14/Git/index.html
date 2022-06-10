@@ -1,0 +1,703 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>git | ValcanoZz Blog</title><meta name="keywords" content="工具技术"><meta name="author" content="ValcanoZz"><meta name="copyright" content="ValcanoZz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Git概述git 是一个分布式版本控制系统，  版本控制 是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统。 版本控制其实最重要的是可以记录文件修改历史记录，从而让用户能够查看历史版本，方便版本切换。   分布式的版本控制系统出现之后，解决了集中式版本控制系统的缺陷：  服务器断网的情况下也可以进行开发（因为版本控制是在本地进行的） 每个客户端保存的也都是整个完整的项目 (包含历史记录，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git">
+<meta property="og:url" content="http://example.com/2022/04/14/Git/index.html">
+<meta property="og:site_name" content="ValcanoZz Blog">
+<meta property="og:description" content="Git概述git 是一个分布式版本控制系统，  版本控制 是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统。 版本控制其实最重要的是可以记录文件修改历史记录，从而让用户能够查看历史版本，方便版本切换。   分布式的版本控制系统出现之后，解决了集中式版本控制系统的缺陷：  服务器断网的情况下也可以进行开发（因为版本控制是在本地进行的） 每个客户端保存的也都是整个完整的项目 (包含历史记录，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151628018.png">
+<meta property="article:published_time" content="2022-04-14T06:55:35.183Z">
+<meta property="article:modified_time" content="2022-05-21T03:46:30.432Z">
+<meta property="article:author" content="ValcanoZz">
+<meta property="article:tag" content="工具技术">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151628018.png"><link rel="shortcut icon" href="/Notes/./img/favicon7.png"><link rel="canonical" href="http://example.com/2022/04/14/Git/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/Notes/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/Notes/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'git',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-21 11:46:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="./css/v_footer.css"><link rel="stylesheet" href="./css/v_blog.css"><link rel="stylesheet" href="./css/v_cursors.css"><link rel="stylesheet" href="./css/v_opacity.css"><link rel="stylesheet" href="./css/v_scrollbar.css"><meta name="generator" content="Hexo 6.1.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/Notes/./img/avatar1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/Notes/archives/"><div class="headline">文章</div><div class="length-num">13</div></a></div><div class="data-item"><a href="/Notes/tags/"><div class="headline">标签</div><div class="length-num">7</div></a></div><div class="data-item"><a href="/Notes/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Notes/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Notes/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/Notes/about/"><i class="fa-fw fas fa- heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151628018.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/Notes/">ValcanoZz Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Notes/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Notes/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/Notes/about/"><i class="fa-fw fas fa- heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-14T06:55:35.183Z" title="发表于 2022-04-14 14:55:35">2022-04-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-21T03:46:30.432Z" title="更新于 2022-05-21 11:46:30">2022-05-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/Notes/categories/%E5%B7%A5%E5%85%B7%E6%8A%80%E6%9C%AF/">工具技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>git 是一个<strong>分布式版本控制</strong>系统，</p>
+<blockquote>
+<p>版本控制 是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统。</p>
+<p>版本控制其实最重要的是可以记录文件修改历史记录，从而让用户能够查看历史版本，方便版本切换。</p>
+</blockquote>
+<blockquote>
+<p>分布式的版本控制系统出现之后，解决了集中式版本控制系统的缺陷：</p>
+<ol>
+<li>服务器断网的情况下也可以进行开发（因为版本控制是在本地进行的）</li>
+<li>每个客户端保存的也都是整个完整的项目 (包含历史记录，更加安全)</li>
+</ol>
+</blockquote>
+<h3 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h3><p><strong>工作区——git add——&gt; 暂存区——git commit——&gt; 本地库</strong></p>
+<blockquote>
+<p>工作区：写代码； </p>
+<p>暂存区：临时存储；</p>
+<p>本地库：历史版本；</p>
+</blockquote>
+<p><strong>代码托管中心</strong></p>
+<p>代码托管中心是基于网络服务器的远程代码仓库，一般称为 <strong>远程库</strong>。</p>
+<blockquote>
+<p>局域网：GitLab</p>
+<p>互联网：GitHub，Gitee码云</p>
+</blockquote>
+<h3 id="基础操作命令"><a href="#基础操作命令" class="headerlink" title="基础操作命令"></a>基础操作命令</h3><p>初始化本地仓库：git init</p>
+<p>查看本地库状态：<strong>git status</strong></p>
+<p>添加暂存区：<strong>git add 文件名</strong> （<strong>git add .</strong>  &#x2F;&#x2F;将所有修改加入暂存区）</p>
+<p>提交本地库：<strong>git commit -m “日志信息” 文件名</strong></p>
+<blockquote>
+<p>工作区的文件是git对象，不能看作是项目，要添加到暂存区，才能形成一个项目。</p>
+</blockquote>
+<p>查看简易版本信息：<strong>git reflog</strong>  (参看详细版本信息：<strong>git log</strong>)</p>
+<p>版本穿梭：<strong>git reset –hard 版本号</strong></p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>在版本控制中，要同时推进多个任务，对每个任务就可以单独创建一个分支。</p>
+<p>使用分支意味着程序员可以把自己的工作从开发主线上分离开来，开发自己的分支时不会影响主线分支的运行。（分支底层是指针的引用）</p>
+<p><strong>分支操作：</strong></p>
+<p>创建分支：<strong>git branch 分支名</strong></p>
+<p>查看分支：<strong>git branch -v</strong></p>
+<p>切换分支：<strong>git checkout 分支名</strong></p>
+<p>将指定分支合并到当前分支上：<strong>git merge 分支名</strong></p>
+<blockquote>
+<p>指定分支要提交本地库，合并后，当前分支才会修改。</p>
+<p>合并冲突： </p>
+<p>当两个分支修改了同一个文件，并都提交到本地库，那么合并时，系统发现一个文件出现两个版本，不知道应该选择哪一个，就是发生了冲突。需要手动修改，选择。</p>
+</blockquote>
+<h3 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h3><p><strong>git remote -v</strong> ：查看当前所有远程地址别名</p>
+<p><strong>git remote add 别名 远程地址</strong>  ：添加远程库地址和别名</p>
+<p>推送本地分支到远程仓库 ：<strong>git push 别名 分支</strong></p>
+<p>拉取远程库到本地库 ： <strong>git pull 别名 分支</strong> （自动提交到本地库）</p>
+<p>克隆远程库到本地库：<strong>git clone 远程地址</strong></p>
+<blockquote>
+<p>克隆结果：初始化本地仓库，创建别名</p>
+</blockquote>
+<h3 id="团队内协作"><a href="#团队内协作" class="headerlink" title="团队内协作"></a>团队内协作</h3><p>远程仓库的所有人需要在仓库的设置-成员设置中邀请其他团队成员加入，其他成员才能将本地分支推送到远程库</p>
+<p>跨团队协作</p>
+<p>团队外的人要先用fork获取远程库，修改后在界面的pull requests发送拉取请求。</p>
+<blockquote>
+<p>SSH免密登录</p>
+<p>生成 .ssh密钥目录： <strong>ssh-keygen -t rsa -C 账号邮箱</strong></p>
+<p>在.ssh目录下会有私钥id_rsa，公钥id_rsa.pub，将公钥添加到github上即可。</p>
+</blockquote>
+<h3 id="IDEA集成Git"><a href="#IDEA集成Git" class="headerlink" title="IDEA集成Git"></a>IDEA集成Git</h3><p>环境准备：</p>
+<p>先配置忽略文件 git.ignore，避免提交无用的文件，避免开发环境差异。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//内容如下</span><br><span class="line"># Compoled class file</span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line"># log file</span><br><span class="line">*.log</span><br><span class="line"></span><br><span class="line">#Blue files</span><br><span class="line">*.ctxt</span><br><span class="line">a</span><br><span class="line">#Mobile Tools for Java(J2ME)</span><br><span class="line">.mtj.tmp/</span><br><span class="line"></span><br><span class="line"># Package Files #</span><br><span class="line">*.jar</span><br><span class="line">*.war</span><br><span class="line">*.nar</span><br><span class="line">*.ear</span><br><span class="line">*.zip</span><br><span class="line">*.tar.gz</span><br><span class="line">*.rar</span><br><span class="line"></span><br><span class="line"># virtual machine crash logs</span><br><span class="line">.classpath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">target</span><br><span class="line">.idea</span><br><span class="line">*.iml</span><br></pre></td></tr></table></figure>
+
+<p>然后在 .gitconfig 中添加 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	excludesfile = C:/Users/123/git.ignore</span><br></pre></td></tr></table></figure>
+
+<p>之后再idea设置的版本控制中设置git.exe路径。</p>
+<p>初始化：</p>
+<p>在工具栏的vcs中选择创建git仓库即可。</p>
+<h1 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h1><p>搜索—高级搜索功能：<a target="_blank" rel="noopener" href="http://github.com/search/advanced">http://github.com/search/advanced</a>  或  搜索框中使用语法进行精确搜索</p>
+<p>快捷面板：ctrl + K</p>
+<p>仓库内对文件搜索： T键</p>
+<p>文件内 行号跳转： L键</p>
+<p>查看文件改动记录： B键</p>
+<p>仓库详情页 打开 VSCode网页版： 。键d</p>
+<p>打开 Gitpod ： 在地址前缀前加上 gitpod.io&#x2F;#&#x2F; </p>
+<p><img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205081046166.png" alt="image-20220508104603843"></p>
+<p>啊啊<img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205211118842.png"></p>
+<h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>前置操作已完成，现在 —— 初始化及部署博客：</p>
+<p>新建文件夹 blog， 在blog 中使用git命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init   //初始化本地博客</span><br><span class="line">hexo clean  //清理编译文件</span><br><span class="line">hexo g   //生成对应的html文件</span><br><span class="line">hexo s	//本地预览运行</span><br></pre></td></tr></table></figure>
+
+<p>修改 _config.yml 文件，在文件最后，修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: 仓库ssh地址</span><br><span class="line">  branch: master</span><br><span class="line">  </span><br><span class="line">  //在17行左右，url下面，添加：</span><br><span class="line">  root: /仓库名</span><br></pre></td></tr></table></figure>
+
+<p>上传：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>每次预览：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>每次上传：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">还要到gitee上更新pages服务，才会生效</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>主题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 主题地址(github地址)</span><br></pre></td></tr></table></figure>
+
+<p>修改 _config.yml 文件中的 theme: 主题文件名</p>
+</blockquote>
+<blockquote>
+<p>源文件上传git：<br>git push -u origin main</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">完整操作：</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin 地址</span><br><span class="line">git push -u origin main</span><br><span class="line">//推送到master分支不知为何，会出错</span><br></pre></td></tr></table></figure>
+
+<p>恢复源文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone 地址</span><br><span class="line">npm install</span><br><span class="line">hexo g</span><br><span class="line">hexo s/d   //本地预览或上传</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>常用hexo命令</p>
+<p>常见命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&#x27;ctrl + c&#x27;关闭server）</span><br><span class="line">hexo deploy #部署到GitHub</span><br><span class="line">hexo help  # 查看帮助</span><br><span class="line">hexo version  #查看Hexo的版本</span><br></pre></td></tr></table></figure>
+
+<p>缩写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>组合命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g #生成并本地预览</span><br><span class="line">hexo d -g #生成并上传</span><br></pre></td></tr></table></figure>
+
+<p>a</p>
+</blockquote>
+<h2 id="hexo-butterfly"><a href="#hexo-butterfly" class="headerlink" title="hexo-butterfly"></a>hexo-butterfly</h2><h3 id="扉页"><a href="#扉页" class="headerlink" title="扉页"></a>扉页</h3><ul>
+<li>page front-matter  用于页面的配置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>页面标题（必须）</td>
+</tr>
+<tr>
+<td>date</td>
+<td>创建日期（必须）</td>
+</tr>
+<tr>
+<td>type</td>
+<td>标签类型（标签，分类，友情链接三个页面必须配置）</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>页面更新日期</td>
+</tr>
+<tr>
+<td>description</td>
+<td>页面描述</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>页面关键字</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>显示页面评论模块（默认true）</td>
+</tr>
+<tr>
+<td>top_img</td>
+<td>页面顶部图片</td>
+</tr>
+<tr>
+<td>mathjax</td>
+<td></td>
+</tr>
+<tr>
+<td>katex</td>
+<td></td>
+</tr>
+<tr>
+<td>aside</td>
+<td>显示侧边栏（默认true）</td>
+</tr>
+<tr>
+<td>aplayer</td>
+<td>在需要的页面加载aplayer的js和css</td>
+</tr>
+<tr>
+<td>highlight_shrink</td>
+<td>代码框是否展开（默认根据配置文件）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>post front-matter 文章页的扉页 ，用于文章页的配置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>页面标题（必须）</td>
+</tr>
+<tr>
+<td>date</td>
+<td>创建日期（必须）</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>页面更新日期</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>文章标签</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>文章分类</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>文章关键字</td>
+</tr>
+<tr>
+<td>description</td>
+<td>页面描述</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>页面关键字</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>显示页面评论模块（默认true）</td>
+</tr>
+<tr>
+<td>top_img</td>
+<td>页面顶部图片</td>
+</tr>
+<tr>
+<td>cover</td>
+<td>文章封面主图，可设 false&#x2F;图地址&#x2F;留空</td>
+</tr>
+<tr>
+<td>toc</td>
+<td>显示文章toc（默认为配置中的enable）</td>
+</tr>
+<tr>
+<td>toc_number</td>
+<td>显示toc_number</td>
+</tr>
+<tr>
+<td>toc_style_simple</td>
+<td>显示 toc 简洁模式</td>
+</tr>
+<tr>
+<td>copyright_author</td>
+<td>文章版权 作者</td>
+</tr>
+<tr>
+<td>copyright_author_herf</td>
+<td>文章版权 作者的链接</td>
+</tr>
+<tr>
+<td>copyright_url</td>
+<td>文章版权 文章的链接</td>
+</tr>
+<tr>
+<td>copyright_info</td>
+<td>文章版权 的版权声明</td>
+</tr>
+<tr>
+<td>mathjax</td>
+<td></td>
+</tr>
+<tr>
+<td>katex</td>
+<td></td>
+</tr>
+<tr>
+<td>aside</td>
+<td>显示侧边栏（默认true）</td>
+</tr>
+<tr>
+<td>aplayer</td>
+<td>在需要的页面加载aplayer的js和css</td>
+</tr>
+<tr>
+<td>highlight_shrink</td>
+<td>代码框是否展开（默认根据配置文件）</td>
+</tr>
+</tbody></table>
+<h3 id="顶部图"><a href="#顶部图" class="headerlink" title="顶部图"></a>顶部图</h3><p>主页的图——index_img:<br>默认是文章配图——default_top_img:<br>归档页的主图—— archive_img<br>标签页的主图——tag_img<br>标签页的文章配图——tag_per_img<br>分类页的主图——category_img<br>分类页的文章配图——category_per_img</p>
+<p>其他页面和文章页的top_img： 可以到文章的扉页 配置——top_img: xxx</p>
+<h3 id="文章置顶"><a href="#文章置顶" class="headerlink" title="文章置顶"></a>文章置顶</h3><ul>
+<li>在文章的扉页 添加 sticky：1 ，数字越大，置顶的优先级越大；</li>
+</ul>
+<h3 id="文章封面"><a href="#文章封面" class="headerlink" title="文章封面"></a>文章封面</h3><ul>
+<li><p>在文章的扉页 添加  cover: 图片地址</p>
+</li>
+<li><p>可以在配置文件里配置默认图片， default_cover:  xxx</p>
+<p>如果要配置多张图片，随机选择一张作为cover，写法为：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">default_cover:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">图片地址</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">图片地址</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">图片地址</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="文章版权"><a href="#文章版权" class="headerlink" title="文章版权"></a>文章版权</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_copyright:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">decode:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">CC</span> <span class="string">BY-NC-SA</span> <span class="number">4.0</span></span><br><span class="line">  <span class="attr">license_url:</span> <span class="string">https://creativecommons.org/licenses/by-nc-sa/4.0/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="侧边栏"><a href="#侧边栏" class="headerlink" title="侧边栏"></a>侧边栏</h3><p>在配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">aside:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hide:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">button:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">mobile:</span> <span class="literal">true</span> <span class="comment"># display on mobile</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">right</span> <span class="comment"># left or right</span></span><br><span class="line">  <span class="attr">card_author:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">description:</span></span><br><span class="line">    <span class="attr">button:</span></span><br><span class="line">      <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">icon:</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">      <span class="attr">text:</span> <span class="string">Follow</span> <span class="string">Me</span></span><br><span class="line">      <span class="attr">link:</span> <span class="string">https://github.com/xxxxxx</span></span><br><span class="line">  <span class="attr">card_announcement:</span></span><br><span class="line">  <span class="string">。。。。等等等</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文章打赏"><a href="#文章打赏" class="headerlink" title="文章打赏"></a>文章打赏</h3><p>在配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">reward:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">QR_code:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">img:</span> <span class="string">二维码图片</span></span><br><span class="line">      <span class="attr">link:</span></span><br><span class="line">      <span class="string">text:微信</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">img:</span> <span class="string">二维码图片</span></span><br><span class="line">      <span class="attr">link:</span></span><br><span class="line">      <span class="attr">text:</span> <span class="string">支付宝</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="TOC"><a href="#TOC" class="headerlink" title="TOC"></a>TOC</h3><p>显示目录，在配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">page:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">expand:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">style_simple:</span> <span class="literal">false</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="相关文章推荐"><a href="#相关文章推荐" class="headerlink" title="相关文章推荐"></a>相关文章推荐</h3><p>根据tags的比重来推荐，在配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">related_post:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">6</span> <span class="comment"># 显示推荐文章数目</span></span><br><span class="line">  <span class="attr">date_type:</span> <span class="string">created</span> <span class="comment"># 显示创建或更新日期，created 或 updated</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文章锚点"><a href="#文章锚点" class="headerlink" title="文章锚点"></a>文章锚点</h3><p> 开启后，在文章中滚动时，文章链接会根据标题进行变化（每替换一次，都会留下一次历史记录，锚点过多，可能导致历史记录过多）</p>
+<p>配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">anchor:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h3><p>配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Avatar (頭像)</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">img:</span> <span class="string">图片地址</span> <span class="string">如：</span> <span class="string">./img/avatar1.jpg</span></span><br><span class="line">  <span class="attr">effect:</span> <span class="literal">false</span>  <span class="comment">#头像一直转圈</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="网站图标"><a href="#网站图标" class="headerlink" title="网站图标"></a>网站图标</h3><p>配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">favicon:</span> </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="图片描述"><a href="#图片描述" class="headerlink" title="图片描述"></a>图片描述</h3><p>在图片下显示描述信息，优先 title属性，然后是 alt属性</p>
+<p>配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">photofigcaption:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p>配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># copy settings</span></span><br><span class="line"><span class="comment"># copyright: Add the copyright information after copied content (複製的內容後面加上版權信息)</span></span><br><span class="line"><span class="attr">copy:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>   <span class="comment"># 能否复制</span></span><br><span class="line">  <span class="attr">copyright:</span>	<span class="comment"># 复制内容后加上版权信息</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">limit_count:</span> <span class="number">50</span>	<span class="comment">#复制文字大于限制时 加版权信息</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="脚页自定义文本"><a href="#脚页自定义文本" class="headerlink" title="脚页自定义文本"></a>脚页自定义文本</h3><p>custom_text:  支持HTML</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">custom_text:</span>  <span class="string">Hi,</span> <span class="string">welcome</span> <span class="string">to</span> <span class="string">my</span> <span class="string">&lt;a</span> <span class="string">href=&quot;https://butterfly.js.org/&quot;&gt;blog&lt;/a&gt;!</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="插入自定义代码"><a href="#插入自定义代码" class="headerlink" title="插入自定义代码"></a>插入自定义代码</h3><p>修改配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如；</span></span><br><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;./css/footer.css&quot;&gt;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;./css/blog.css&quot;&gt;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;./css/cursors.css&quot;&gt;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;./css/opacity.css&quot;&gt;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;./css/scrollbar.css&quot;&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="comment"># - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="网站背景"><a href="#网站背景" class="headerlink" title="网站背景"></a>网站背景</h3><p>默认白色</p>
+<p>配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Website Background (設置網站背景)</span></span><br><span class="line"><span class="comment"># can set it to color or image (可設置圖片 或者 顔色)</span></span><br><span class="line"><span class="comment"># The formal of image: url(http://xxxxxx.com/xxx.jpg)</span></span><br><span class="line"><span class="attr">background:</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="网站副标题"><a href="#网站副标题" class="headerlink" title="网站副标题"></a>网站副标题</h3><p>配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主页subtitle</span></span><br><span class="line"><span class="attr">subtitle:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Typewriter Effect (打字效果)</span></span><br><span class="line">  <span class="attr">effect:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># loop (循环打字)</span></span><br><span class="line">  <span class="attr">loop:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># source 调用第三方服务</span></span><br><span class="line">  <span class="comment"># source: false 关闭调用</span></span><br><span class="line">  <span class="comment"># source: 1  调用一言网的一句话（简体） https://hitokoto.cn/</span></span><br><span class="line">  <span class="comment"># source: 2  调用一句网（简体） http://yijuzhan.com/</span></span><br><span class="line">  <span class="comment"># source: 3  调用今日诗词（简体） https://www.jinrishici.com/</span></span><br><span class="line">  <span class="comment"># subtitle 会先显示 source , 再显示 sub 的内容</span></span><br><span class="line">  <span class="attr">source:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># 如果关闭打字效果，subtitle 只会显示 sub 的第一行文字</span></span><br><span class="line">  <span class="attr">sub:</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="备案信息"><a href="#备案信息" class="headerlink" title="备案信息"></a>备案信息</h3><p>在页脚的custom_text也可以写代码，在此写下备案跳转链接。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">owner:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">since:</span> <span class="number">2021</span></span><br><span class="line">  <span class="attr">custom_text:</span> <span class="string">&lt;div&gt;&lt;a</span> <span class="string">onclick=&quot;window.open(&#x27;&#x27;)&quot;&gt;&lt;/a&gt;&lt;/div&gt;</span></span><br><span class="line">  <span class="attr">copyright:</span> <span class="literal">true</span> <span class="comment"># Copyright of theme and framework</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="引擎收录"><a href="#引擎收录" class="headerlink" title="引擎收录"></a>引擎收录</h3><blockquote>
+</blockquote>
+<h3 id="url持久化"><a href="#url持久化" class="headerlink" title="url持久化"></a>url持久化</h3><p>hexo默认生成的文章地址路径是： 网站名&#x2F;年&#x2F;月&#x2F;日&#x2F;文章名，它的url结构超过3层，较深，对搜索爬虫不友好。</p>
+<p>安装：npm install hexo-abbrlink –save</p>
+<p>修改配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">archives/:abbrlink.html</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line"> <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment">#算法：crc16(default)and crc32</span></span><br><span class="line"> <span class="attr">rep:</span> <span class="string">hex</span>     <span class="comment">#进制：dec(default)and hex</span></span><br></pre></td></tr></table></figure>
+
+<p>添加nofollow标签：</p>
+<p>安装：npm install hexo-filter-nofollow –save</p>
+<p>添加配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">nofollow:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">site</span></span><br><span class="line">  <span class="attr">exclude:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="标签外挂"><a href="#标签外挂" class="headerlink" title="标签外挂"></a>标签外挂</h3><p>（可能有移植问题，不是很推荐）</p>
+<p>Gallery相册图库</p>
+<p>写法：</p>
+<ul>
+<li>name：图库名字</li>
+<li>description：图库描述</li>
+<li>link：连接到对应相册的地址</li>
+<li>img-url：图库封面的地址</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;gallery-group-main&quot;</span>&gt;</span></span><br><span class="line">	&#123;% galleryGroup name description link img-url %&#125;</span><br><span class="line">	&#123;% galleryGroup name description link img-url %&#125;</span><br><span class="line">	&#123;% galleryGroup name description link img-url %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 例如： --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;gallery-group-main&quot;</span>&gt;</span></span><br><span class="line">	&#123;% galleryGroup &#x27;壁纸&#x27; &#x27;收藏的一些壁纸&#x27; &#x27;/Gallery/wallpaper&#x27; https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png %&#125;</span><br><span class="line">	&#123;% galleryGroup &#x27;漫威&#x27; &#x27;关于漫威的图片&#x27; &#x27;/Gallery/marvel&#x27; https://i.loli.net/2019/12/25/8t97aVlp4hgyBGu.jpg %&#125;</span><br><span class="line">	&#123;% galleryGroup &#x27;OH MY GIRL&#x27; &#x27;关于OH MY GIRL的图片&#x27; &#x27;/Gallery/ohmygirl&#x27; https://i.loli.net/2019/12/25/hOqbQ3BIwa6KWpo.jpg %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>Gallery相册</p>
+<p>这是新的Gallery相册，会自动根据图片进行排版，书写也更方便，与markdown格式一样；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% gallery %&#125;</span><br><span class="line">markdown 图片格式</span><br><span class="line">&#123;% endgallery %&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>tag-hide</p>
+<p>可以将 一些内容隐藏起来，并提供按钮让用户点击显示；</p>
+<p>注：内容不要用 h1~h6标题，会让目录有一些异常；</p>
+<p>inline ——  只能隐藏文字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% hideInline content,display,bg,color %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>content: 文本内容</p>
+</li>
+<li><p>display: 按钮显示的文字(可选)</p>
+</li>
+<li><p>bg: 按钮的背景颜色(可选)</p>
+</li>
+<li><p>color: 按钮文字的颜色(可选)</p>
+</li>
+</ul>
+<p>注：content部分不能用英文逗号，可用 <code>&amp;sbquo;</code> 代替</p>
+<p>block ——  隐藏多个内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% hideBlock display,bg,color %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endhideBlock %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>content: 文本内容</li>
+<li>display: 按钮显示的文字(可选)</li>
+<li>bg: 按钮的背景颜色(可选)</li>
+<li>color: 按钮文字的颜色(可选)</li>
+</ul>
+<p>toggle —— 隐藏大量内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% hideToggle display,bg,color %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endhideToggle %&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">ValcanoZz</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/04/14/Git/">http://example.com/2022/04/14/Git/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">ValcanoZz Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/Notes/tags/%E5%B7%A5%E5%85%B7%E6%8A%80%E6%9C%AF/">工具技术</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151628018.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Notes/2022/04/14/Java%E2%80%94SSM&amp;Maven/"><img class="prev-cover" src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151630621.jpeg" onerror="onerror=null;src='/Notes/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java—SSM&amp;Maven</div></div></a></div><div class="next-post pull-right"><a href="/Notes/2022/04/14/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"><img class="next-cover" src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151628461.jpeg" onerror="onerror=null;src='/Notes/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C语言</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NjA4NS8zMjU0OA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git"><span class="toc-number">1.</span> <span class="toc-text">Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.0.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="toc-number">1.0.2.</span> <span class="toc-text">工作机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.3.</span> <span class="toc-text">基础操作命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%94%AF"><span class="toc-number">1.0.4.</span> <span class="toc-text">分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">1.0.5.</span> <span class="toc-text">添加远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A2%E9%98%9F%E5%86%85%E5%8D%8F%E4%BD%9C"><span class="toc-number">1.0.6.</span> <span class="toc-text">团队内协作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA%E9%9B%86%E6%88%90Git"><span class="toc-number">1.0.7.</span> <span class="toc-text">IDEA集成Git</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GitHub"><span class="toc-number">2.</span> <span class="toc-text">GitHub</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo"><span class="toc-number">3.</span> <span class="toc-text">hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-butterfly"><span class="toc-number">3.1.</span> <span class="toc-text">hexo-butterfly</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%89%E9%A1%B5"><span class="toc-number">3.1.1.</span> <span class="toc-text">扉页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B6%E9%83%A8%E5%9B%BE"><span class="toc-number">3.1.2.</span> <span class="toc-text">顶部图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E7%BD%AE%E9%A1%B6"><span class="toc-number">3.1.3.</span> <span class="toc-text">文章置顶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2"><span class="toc-number">3.1.4.</span> <span class="toc-text">文章封面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E7%89%88%E6%9D%83"><span class="toc-number">3.1.5.</span> <span class="toc-text">文章版权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%A7%E8%BE%B9%E6%A0%8F"><span class="toc-number">3.1.6.</span> <span class="toc-text">侧边栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%89%93%E8%B5%8F"><span class="toc-number">3.1.7.</span> <span class="toc-text">文章打赏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TOC"><span class="toc-number">3.1.8.</span> <span class="toc-text">TOC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90"><span class="toc-number">3.1.9.</span> <span class="toc-text">相关文章推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E9%94%9A%E7%82%B9"><span class="toc-number">3.1.10.</span> <span class="toc-text">文章锚点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E5%83%8F"><span class="toc-number">3.1.11.</span> <span class="toc-text">头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E5%9B%BE%E6%A0%87"><span class="toc-number">3.1.12.</span> <span class="toc-text">网站图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E6%8F%8F%E8%BF%B0"><span class="toc-number">3.1.13.</span> <span class="toc-text">图片描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6"><span class="toc-number">3.1.14.</span> <span class="toc-text">复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E9%A1%B5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E6%9C%AC"><span class="toc-number">3.1.15.</span> <span class="toc-text">脚页自定义文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81"><span class="toc-number">3.1.16.</span> <span class="toc-text">插入自定义代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E8%83%8C%E6%99%AF"><span class="toc-number">3.1.17.</span> <span class="toc-text">网站背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E5%89%AF%E6%A0%87%E9%A2%98"><span class="toc-number">3.1.18.</span> <span class="toc-text">网站副标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF"><span class="toc-number">3.1.19.</span> <span class="toc-text">备案信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E6%94%B6%E5%BD%95"><span class="toc-number">3.1.20.</span> <span class="toc-text">引擎收录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#url%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">3.1.21.</span> <span class="toc-text">url持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E5%A4%96%E6%8C%82"><span class="toc-number">3.1.22.</span> <span class="toc-text">标签外挂</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By ValcanoZz</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><div><a onclick="window.open('')"></a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/Notes/js/utils.js"></script><script src="/Notes/js/main.js"></script><script src="/Notes/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/Notes/js/search/local-search.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
