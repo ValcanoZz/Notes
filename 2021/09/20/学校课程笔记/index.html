@@ -1,0 +1,850 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>class learn | ValcanoZz Blog</title><meta name="keywords" content="学校"><meta name="author" content="ValcanoZz"><meta name="copyright" content="ValcanoZz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据挖掘1、概述数据挖掘： 是在大型数据存储库中，自动发现有用信息的过程。  数据挖掘是综合了统计学、最优化、机器学习、以及数据库的一门现代计算机技术，旨在发现海量数据中的模型与模式。  数据挖掘是数据库中知识发现（knowledge discovery in database,KDD）不可缺少的一部分，而KDD是将未加工的数据转换为有用信息的整个过程。  KDD过程： 输入数据——数据预处理——">
+<meta property="og:type" content="article">
+<meta property="og:title" content="class learn">
+<meta property="og:url" content="http://example.com/2021/09/20/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="ValcanoZz Blog">
+<meta property="og:description" content="数据挖掘1、概述数据挖掘： 是在大型数据存储库中，自动发现有用信息的过程。  数据挖掘是综合了统计学、最优化、机器学习、以及数据库的一门现代计算机技术，旨在发现海量数据中的模型与模式。  数据挖掘是数据库中知识发现（knowledge discovery in database,KDD）不可缺少的一部分，而KDD是将未加工的数据转换为有用信息的整个过程。  KDD过程： 输入数据——数据预处理——">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2021-09-20T00:57:20.000Z">
+<meta property="article:modified_time" content="2022-09-20T01:09:17.740Z">
+<meta property="article:author" content="ValcanoZz">
+<meta property="article:tag" content="学校">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/Notes/./img/favicon7.png"><link rel="canonical" href="http://example.com/2021/09/20/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/Notes/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/Notes/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'class learn',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-20 09:09:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="./css/v_footer.css"><link rel="stylesheet" href="./css/v_blog.css"><link rel="stylesheet" href="./css/v_cursors.css"><link rel="stylesheet" href="./css/v_opacity.css"><link rel="stylesheet" href="./css/v_scrollbar.css"><meta name="generator" content="Hexo 6.1.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/Notes/./img/avatar1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/Notes/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div><div class="data-item"><a href="/Notes/tags/"><div class="headline">标签</div><div class="length-num">14</div></a></div><div class="data-item"><a href="/Notes/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Notes/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Notes/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/Notes/about/"><i class="fa-fw fas fa- heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/Notes/">ValcanoZz Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Notes/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Notes/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/Notes/about/"><i class="fa-fw fas fa- heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">class learn</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-20T00:57:20.000Z" title="发表于 2021-09-20 08:57:20">2021-09-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-20T01:09:17.740Z" title="更新于 2022-09-20 09:09:17">2022-09-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="class learn"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数据挖掘"><a href="#数据挖掘" class="headerlink" title="数据挖掘"></a>数据挖掘</h1><h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><p>数据挖掘： 是在大型数据存储库中，自动发现有用信息的过程。</p>
+<blockquote>
+<p>数据挖掘是综合了统计学、最优化、机器学习、以及数据库的一门现代计算机技术，旨在<strong>发现海量数据中的模型与模式</strong>。</p>
+</blockquote>
+<p>数据挖掘是<code>数据库中知识发现</code>（knowledge discovery in database,KDD）不可缺少的一部分，而<code>KDD是将未加工的数据转换为有用信息的整个过程</code>。</p>
+<ul>
+<li>KDD过程： 输入数据——数据预处理——数据挖掘——后处理——得到信息<ul>
+<li>数据预处理的方式有：特征选择，维归约，规范化，选择数据子集</li>
+<li>后处理的方式有：模式过滤，可视化，模式表示</li>
+</ul>
+</li>
+</ul>
+<p>面临的问题&#x2F;挑战：</p>
+<ul>
+<li>可伸缩 —— 为处理海量数据，算法必须是可伸缩的，对此，可能需要新的数据结构，也可使用抽样技术，或开发并行和分布式算法。</li>
+<li>高维性 ——  现在的数据集常常有非常多的属性；某些数据分析算法，随着维度（特征数）的增加，计算复杂性迅速增加 。</li>
+<li>异种数据和复杂数据 —— 类型属性不同的数据集…</li>
+<li>数据的所有权与分布 —— 数据分布各地，需要分布式的数据挖掘技术。</li>
+<li>非传统的分析 —— 传统统计学是假设-验证模式，但当前数据分析常产生数以千计的假设，且数据集通常也不是精心设计的。</li>
+</ul>
+<h3 id="数据挖掘的任务"><a href="#数据挖掘的任务" class="headerlink" title="数据挖掘的任务"></a>数据挖掘的任务</h3><p>一般分为两类：</p>
+<ul>
+<li><strong>预测任务</strong> ：根据其他属性的值（说明变量&#x2F;自变量），预测特定属性的值（目标变量&#x2F;因变量）。<ul>
+<li><p>关联分析 —— 用来发现描述数据中的强关联特征的模式</p>
+<ul>
+<li><p>关联规则发现</p>
+</li>
+<li><p>序列模式发现</p>
+</li>
+</ul>
+</li>
+<li><p>聚类 —— 发现关联紧密的观测值组群，属于同一簇的观察值相互之间尽可能类似。</p>
+</li>
+</ul>
+</li>
+<li><strong>描述任务</strong> ：为了导出 能概括数据中潜在联系 的模式。 描述任务通常是探查性的，常需要后处理区验证和解释结果。<ul>
+<li><p>预测建模：</p>
+<ul>
+<li><p>分类 —— 预测离散的目标变量</p>
+</li>
+<li><p>回归 —— 预测连续的目标变量</p>
+</li>
+</ul>
+</li>
+<li><p>异常&#x2F;偏差检测 —— 识别其特征显著不同于其他数据的观测值，这样的观察值称为异常点&#x2F;离群点。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据挖掘的主要流程"><a href="#数据挖掘的主要流程" class="headerlink" title="数据挖掘的主要流程"></a>数据挖掘的主要流程</h3><ul>
+<li>业务理解</li>
+<li>数据获取</li>
+<li>数据预处理</li>
+<li>数据建模</li>
+<li>模型评估</li>
+<li>模型部署</li>
+</ul>
+<h2 id="2、数据"><a href="#2、数据" class="headerlink" title="2、数据"></a>2、数据</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据集：是数据对象的集合。 数据对象是用一组刻画对象基本特征的属性进行描述的。</p>
+<p>属性：是对象的性质&#x2F;特性，它因对象而异。</p>
+<p>测量标度：是将 数值&#x2F;符号值 和 对象的属性 相关联的规则（函数）。</p>
+<hr>
+<p>对于用于描述属性的一些数值性质：</p>
+<ul>
+<li>相异性： &#x3D;  和 !&#x3D;</li>
+<li>序 ：&lt; ，&lt;&#x3D; ，&gt; 和 &gt;&#x3D;</li>
+<li>加法： +  和 -</li>
+<li>乘法： * 和 &#x2F;</li>
+</ul>
+<p>根据上述性质，可以定义四种属性类型 —— 标称，序数，区间，比率</p>
+<table>
+<thead>
+<tr>
+<th>属性类型</th>
+<th></th>
+<th>描述</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分类的&#x2F;定性的</td>
+<td>标称</td>
+<td>标称属性的值仅仅只是不同的名字，即标称值只提供足够的信息以区分对象（&#x3D;，!&#x3D;）</td>
+<td>邮政编码，员工ID号，性别</td>
+</tr>
+<tr>
+<td></td>
+<td>序数</td>
+<td>序数属性的值提供足够的信息确定对象的序（&gt;，&lt;）</td>
+<td>成绩，街道号码</td>
+</tr>
+<tr>
+<td>数值的&#x2F;定量的</td>
+<td>区间</td>
+<td>对于区间属性，值之间的差是有意义的，即存在测量单位（+，-）</td>
+<td>日期，温度</td>
+</tr>
+<tr>
+<td></td>
+<td>比率</td>
+<td>对于比率变量，差和比率都是有意义的（*，&#x2F;）</td>
+<td>绝对温度，计数，年龄，质量</td>
+</tr>
+</tbody></table>
+<p>还可以用值的个数描述属性：</p>
+<ul>
+<li>离散的</li>
+<li>连续的</li>
+</ul>
+<hr>
+<p>数据集的一般特性：</p>
+<ul>
+<li><p>维度 —— 即数据集中的对象具有的属性数目。</p>
+<blockquote>
+<p>为了避免分析高维数据时陷入维灾难，就需要数据预处理（减少维度，即维归约）</p>
+</blockquote>
+</li>
+<li><p>稀疏性 —— 有些非对称特征的数据集，可能某些值占比非常大，另一些占比又非常小。</p>
+<blockquote>
+<p>比如非对称特征的数据集，其对象的大部分属性的值都为0，或者只有非零值才重要，则只存储处理非零值</p>
+</blockquote>
+</li>
+<li><p>分辨率 —— 数据的模式依赖于分辨率，即度量尺度。</p>
+<blockquote>
+<p>比如在数米的尺度下，地球表面很不平坦，但在数十公里的分辨率下却是相对平坦。</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>数据集的类型：</strong></p>
+<ul>
+<li><p>**记录数据 ** —— 有一组记录，每条记录有一组固定的属性。</p>
+<ul>
+<li><strong>数据矩阵</strong> —— 数据集的所有对象拥有相同的属性集，可以表示为m*n的矩阵。</li>
+<li>文本矩阵（<strong>文档-词矩阵</strong> 存放每个词在每篇文章出现的次数，是稀疏数据矩阵，一般只会存放非零项）</li>
+<li>**事务矩阵 ** —— 每个事务涉及一系列的项。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202209131417244.png" alt="image-20220913141727808"></p>
+</li>
+<li><p><strong>基于图形的数据集</strong> —— 数据对象之间存在联系。 如万维网上的超链接， 分子结构中原子的排布，等等。</p>
+</li>
+<li><p><strong>有序数据</strong> ——  数据涉及时间或空间序的联系</p>
+<ul>
+<li>空间数据：如不同地理位置的气象数据（降水，气温，气压）</li>
+<li>时间数据：一个地方的温度变化时间表</li>
+<li>序列数据：如基因组序列</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据质量"><a href="#数据质量" class="headerlink" title="数据质量"></a>数据质量</h3><p>数据挖掘使用的数据常常是为其他用途的，或收集时未明确目的，所以其质量时常存在问题：</p>
+<ol>
+<li><p><strong>测量误差</strong> ：记录值与实际值不同。</p>
+<p>**数据收集错误 **：遗漏或不正确地包含其他数据。</p>
+<blockquote>
+<p>噪声是测量误差的随机部分；</p>
+<p>离群点，遗漏值，不一致的值，重复的值 都可能同时涉及测量误差和数据收集错误。</p>
+</blockquote>
+</li>
+<li><p><strong>噪声</strong> ：可能涉及值被扭曲或加入谬误对象。</p>
+<p><strong>伪像</strong> ：数据错误是某些确定性现象导致的。</p>
+</li>
+<li><p><strong>精度</strong> ：重复测量值之间的接近程度 —— 测量值的标准差</p>
+<p>**偏移 ** ：测量值与被测量值之间的系统变差 —— |测量均值 - 被测量值|</p>
+<p>**准确率 ** ：测量值与实际值的接近度 —— 受限于工具的精度，能得到的有效数字。</p>
+</li>
+<li><p>**离群点 ** ：不同于大部分数据对象，不寻常的值。</p>
+</li>
+<li><p><strong>遗漏值</strong></p>
+</li>
+<li><p><strong>不一致的值</strong></p>
+</li>
+<li><p><strong>重复的值</strong></p>
+</li>
+</ol>
+<hr>
+<p>数据质量也要从应用角度来看：</p>
+<ol>
+<li>时效性 ： 数据收集后的老化、过时</li>
+<li>相关性</li>
+</ol>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><blockquote>
+<ul>
+<li>聚集</li>
+<li>抽样</li>
+<li>维归约</li>
+<li>特征子集选择</li>
+<li>离散化和二元化</li>
+<li>变量变换</li>
+</ul>
+</blockquote>
+<h4 id="聚集"><a href="#聚集" class="headerlink" title="聚集"></a>聚集</h4><p>聚集：将两个或多个对象合并成单个对象。</p>
+<ul>
+<li><p>目的：数据规约（规模变小但保持完整性），标度转换，更稳定的数据。</p>
+</li>
+<li><p>缺点：会丢失一些细节。</p>
+</li>
+</ul>
+<h4 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h4><p>抽样：选择部分数据对象子集进行分析。</p>
+<p>有效抽样的原则：代表性，保留原数据集的性质。</p>
+<p>分类：</p>
+<ul>
+<li>简单抽样 ：分为无放回、有放回。</li>
+<li>分层抽样： 每组抽相同个数，或按比例抽样。</li>
+<li>自适应&#x2F;渐进抽样：从小样本开始，逐渐增大样本容量直至得到足够的样本。（因为难以预先确定样本集的大小）</li>
+</ul>
+<blockquote>
+<p>统计学进行抽样，是因为得到整个数据集的代价太高。</p>
+<p>数据挖掘进行抽样，是因为处理所有数据的代价太高。</p>
+</blockquote>
+<h4 id="维归约"><a href="#维归约" class="headerlink" title="维归约"></a>维归约</h4><p>维灾难： 随着数据维度的增加，许多数据分析变得非常困难。特殊地，随着维度增加，数据在它所占据的空间中越来越稀疏。</p>
+<p>—— 对于分类，这可能意味没有足够的数据对象来创建模型</p>
+<p>—— 对于聚类，点之间的密度和距离的定义（对聚类是至关重要的）变得不太有意义</p>
+<p>分类准确率降低，聚类质量下降，这导致许多分类和聚类算法都不好处理高维数据，</p>
+<p>维归约常用方法：</p>
+<ol>
+<li>主成分分析 —— 将高维空间的向量变换为低维空间的向量（投影）</li>
+<li>奇异值分解</li>
+</ol>
+<h4 id="特征子集选择"><a href="#特征子集选择" class="headerlink" title="特征子集选择"></a>特征子集选择</h4><p>当存在冗余特征、不相关特征时，仅使用特征的一个子集。这能降低维度的同时避免丢失信息。</p>
+<p>三种方法：</p>
+<ol>
+<li>嵌入方法 —— 特征选择是数据挖掘算法的内在组成（强耦合）</li>
+<li>过滤方法 —— 在挖掘算法前，进行特征选择。（有耦合：特征选择依赖于具体算法，但不是算法的内在组成）</li>
+<li>包装方法 —— 将挖掘算法作为黑盒，特征选择完全独立于目标算法。（无耦合）</li>
+</ol>
+<p>特征子集选择过程的流程图：</p>
+<p><img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202209132120862.png" alt="image-20220913212019766"></p>
+<p>特征创建： 可以由原来的属性创建新的属性集，更有效地捕获数据集中的重要信息。以下是三种创建新属性的方法：</p>
+<ol>
+<li>特征提取：如人脸检测，指纹识别</li>
+<li>映射数据到新的空间： 傅里叶分析、小波分析</li>
+<li>特征构造：如密度 &#x3D; 质量&#x2F;体积</li>
+</ol>
+<h4 id="离散化和二元化"><a href="#离散化和二元化" class="headerlink" title="离散化和二元化"></a>离散化和二元化</h4><p>为什么要离散化&#x2F;二元化：</p>
+<ol>
+<li>减少属性值个数，便于挖掘；</li>
+<li>离散化产生概念分层结构，可以在不同抽象层进行挖掘；</li>
+<li>有些算法需要离散属性或二元属性；</li>
+</ol>
+<p>主要情形：</p>
+<ul>
+<li><p><strong>离散属性二元化</strong>：如将数值转变为二进制</p>
+</li>
+<li><p><strong>连续属性离散化</strong></p>
+<ul>
+<li><p>非监督离散化 —— 不使用数据的类别信息</p>
+<ul>
+<li><p>等宽法 ——  将属性的值域分成具有相同宽度的区间，区间的个数由数据本身的特点决定</p>
+<blockquote>
+<p>等宽法对离散点很是敏感，可能会导致某些区间存在大量数据，而有的区间数据量却很少。</p>
+</blockquote>
+</li>
+<li><p>等频法 —— 将相同数量的记录放进每个区间。</p>
+<blockquote>
+<p>为了保证每个区间的数据一致，很有可能将原本是相同的两个数值却被分进了不同的区间。</p>
+</blockquote>
+</li>
+<li><p>k均值法</p>
+</li>
+</ul>
+<p>性能：k均值法&gt;等频法&gt;等宽法</p>
+</li>
+<li><p>监督离散化 —— 适用数据的类别信息</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="变量变换"><a href="#变量变换" class="headerlink" title="变量变换"></a>变量变换</h4><h3 id="相似性和相异性度量"><a href="#相似性和相异性度量" class="headerlink" title="相似性和相异性度量"></a>相似性和相异性度量</h3><p>两个对象的相似度：这两者的相似程度的数值度量。通常，相似度是非负的，在0（不相似）和1（完全相似）之间取值。</p>
+<p>两个对象的相异度：这两者的差异程度的数值度量。通常，属于“<strong>距离</strong>”等同于相异度。相异度有时在[0,1]取值，有时在[0，无穷]取值。</p>
+<ul>
+<li><p><strong>||x||</strong>  是向量x的<strong>长度</strong>（<strong>范数</strong>），例：||x||是指第二范数，||x||<del>1</del>是指第一范数。</p>
+<blockquote>
+<p>也可以理解为： Minkowski距离d（x，y）中，y固定为原点（0，0），即坐标x到原点的距离。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>变换： 通常把相似度转换成相异度，或者把邻近度变换到一个特定区间。</p>
+</blockquote>
+<p>简单属性的相似度和相异度：</p>
+<p><img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202209132134844.png" alt="image-20220913213433773"></p>
+<h4 id="数据对象之间的相异度"><a href="#数据对象之间的相异度" class="headerlink" title="数据对象之间的相异度"></a>数据对象之间的相异度</h4><ul>
+<li><p><strong>距离</strong> </p>
+<p>性质：如果d(x,y) 是两个点x和y之间的距离，则以下性质成立。</p>
+<ul>
+<li>非负性：1. 对于所有x和y，d(x,y) &gt;&#x3D; 0；2. 仅当 x&#x3D;y 时 d(x,y) &#x3D; 0 。</li>
+<li>对称性 ：对于所有x和y，d(x,y) &#x3D; d(y,x)</li>
+<li>三角不等式：对于所有x，y，z，d(x,z) &lt; d(x,y) + d(y,z)</li>
+</ul>
+<p>满足三个性质的测量称为<strong>度量</strong>。</p>
+<hr>
+<p>距离例子：</p>
+<ul>
+<li><p><strong>Minkowski距离</strong>：<br>$$<br>d(x,y) &#x3D; (\sum_{k&#x3D;1}^{n}{|x_k - y_k|^r})^{1&#x2F;r}<br>$$<br>r是参数，当r&#x3D;1是曼哈顿距离，当r&#x3D;2是欧几里得距离。</p>
+</li>
+<li><p><strong>Manhattan</strong> 曼哈顿距离，也叫城市街区距离：<br>$$<br>d(x,y) &#x3D; \sum_{k&#x3D;1}^{n}{|x_k - y_k|}<br>$$</p>
+</li>
+<li><p><strong>Euclidean</strong> 欧式距离，欧几里得距离：<br>$$<br>d(x，y) &#x3D;  \sqrt{\sum_{k&#x3D;1}^{n}{(x_k - y_k)^2}}<br>$$</p>
+</li>
+<li><p><strong>上确界距离</strong>，当r趋于无穷时：</p>
+<p><img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202209200908386.png" alt="image-20220920090851952"></p>
+</li>
+</ul>
+</li>
+<li><p>非度量的相异度： 有些相异度无法满足度量性质。</p>
+<p>例：集合差， 一般 A-B !&#x3D; B-A，所以size(A-B) !&#x3D;  size(B-A)，不满足对称性。</p>
+</li>
+</ul>
+<h4 id="数据对象之间的相似度"><a href="#数据对象之间的相似度" class="headerlink" title="数据对象之间的相似度"></a>数据对象之间的相似度</h4><p>设<em>s</em>(x, y)是数据点x和y之间的相似度（通常, 0 &lt;&#x3D; <em>s</em>(x, y) &lt;&#x3D; 1），则相似度具有如下典型性质：</p>
+<ol>
+<li>规范性：如果 s(x, y)&#x3D;1, 则 x&#x3D;y </li>
+<li>对称性： s(x,y)  &#x3D;  s(y,x)</li>
+<li>然而，三角不等式（或类似性质）通常不成立。</li>
+</ol>
+<p>邻近性度量：</p>
+<ol>
+<li><p>简单匹配系数 SMC ：<br>$$<br>SMC &#x3D; \frac{值匹配的属性个数}{属性个数} &#x3D; \frac{f_{11}+f_{00}}{f_{01}+f_{10}+f_{11}+f_{00}}<br>$$<br>场景：作弊检测，两个考生答案的相似度（假设全是“对错题”）</p>
+</li>
+<li><p>Jaccard系数 ：<br>$$<br>J &#x3D; \frac{匹配的个数}{不涉及0-0匹配的属性个数} &#x3D; \frac{f_{11}}{f_{01}+f_{10}+f_{11}}<br>$$<br>场景：商品推荐，两个顾客购物记录的相似度（一个属性对应一个商品，1为买过，0为没买过）</p>
+</li>
+<li><p>余弦相似度：</p>
+<p>设x和y是两个向量，则<br>$$<br>cos(x,y) &#x3D; \frac{x \cdot y}{||x||||y||}<br>$$</p>
+</li>
+<li><p>广义Jaccard系数（Tanimoto系数）<br>$$<br>EJ（x，y） &#x3D; \frac{x \cdot y}{||x||^2+||y||^2-x \cdot y}<br>$$</p>
+<blockquote>
+<p>第2点的系数 J 是 EJ(x,y) 的特例。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="3、探索数据"><a href="#3、探索数据" class="headerlink" title="3、探索数据"></a>3、探索数据</h2><p>数据探索，就是对数据进行初步研究，以便更好地理解它特殊性质。</p>
+<p>主要目的：</p>
+<ol>
+<li>有助于选择合适的数据预处理和数据分析技术。</li>
+<li>可以通过对数据进行直观检查来发现模式。</li>
+</ol>
+<p>有三个主题： <strong>汇总统计</strong>，<strong>可视化</strong>，联机分析处理OLAP（不要求）</p>
+<p>汇总统计和可视化总览：</p>
+<table>
+<thead>
+<tr>
+<th>中心趋势</th>
+<th>分散性</th>
+<th>可视化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>均值</td>
+<td>极差</td>
+<td>茎叶图</td>
+</tr>
+<tr>
+<td>中位数</td>
+<td>四分位数</td>
+<td>直方图</td>
+</tr>
+<tr>
+<td>众数</td>
+<td>四分位数间距IQR</td>
+<td>盒装图</td>
+</tr>
+<tr>
+<td>最小值</td>
+<td>方差</td>
+<td>饼图</td>
+</tr>
+<tr>
+<td>最大值</td>
+<td>标准差</td>
+<td>散步图</td>
+</tr>
+<tr>
+<td></td>
+<td>峰度与偏度</td>
+<td>矩阵&#x2F;热力图</td>
+</tr>
+</tbody></table>
+<h3 id="汇总统计"><a href="#汇总统计" class="headerlink" title="汇总统计"></a>汇总统计</h3><ul>
+<li><p><strong>频率：</strong><br>$$<br>frequency(v_i)&#x3D;\frac{具有属性值v_i的对像数}{m}<br>$$</p>
+</li>
+<li><p><strong>众数</strong>：具有最高频率的值（出现次数最多）</p>
+</li>
+<li><p><strong>百分位数</strong>： 对于有序数据，考虑值集的百分位数更有意义。</p>
+<p>百分位数 x<del>p</del>，指在数据集中有 P% 的数据小于 x。通常约定：min(x) &#x3D; x<del>0%</del>，max(x) &#x3D; x<del>100%</del></p>
+</li>
+<li><p>位置度量：<strong>均值</strong>和<strong>中位数</strong></p>
+<p>如果值的分布是倾斜的，或有离群值，可以考虑适用<strong>截断均值</strong>：指定一个百分位数P%，丢弃高位的 (P&#x2F;2)% 和地位的 (P&#x2F;2)%，之后再求均值，即为截断均值。</p>
+<blockquote>
+<p>中位数是 P &#x3D; 100% 时的截断均值，标准均值是 P &#x3D; 0% 时的截断均值。</p>
+</blockquote>
+</li>
+<li><p>散步度量：<strong>极差</strong>和<strong>方差</strong></p>
+<p>极差：最大值 - 最小值</p>
+<p>方差（variance）：<br>$$<br>variance(x) &#x3D; s^2_x &#x3D; \frac{1}{m-1} \sum_{i&#x3D;1}^{n}{(X_i - \overline{X})^2}<br>$$</p>
+</li>
+<li><p>由于均值和方差对离群值很敏感，所以常用更稳健的估计：</p>
+<ul>
+<li><p>绝对平均偏差 ADD<br>$$<br>ADD(X)&#x3D; \frac{1}{m} \sum_{i&#x3D;1}^{n}{|X_i - \overline{X}|}<br>$$</p>
+</li>
+<li><p>中位数据对偏差 MAD<br>$$<br>MAD(x) &#x3D; median({|x_1 - \overline{x}|,…,|x_m - \overline{x}|})<br>$$</p>
+</li>
+<li><p>四分位数极差 interquartile range<br>$$<br>interquartile range(x) &#x3D; x_{75%} - x_{25%}<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>多元汇总统计：（不知道用不用掌握，在ppt13页）</p>
+<ul>
+<li>协方差矩阵</li>
+<li>相关矩阵</li>
+</ul>
+</li>
+</ul>
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><p>可视化是以图形或表格的形式显示信息。 通过可视化，可以更方便地分析数据的特征和属性间的关系。</p>
+<p>可视化的动机：</p>
+<ol>
+<li>人们能够快速吸收大量可视化信息，并发现其中的模式；</li>
+<li>解释模式；</li>
+</ol>
+<p>可视化的一般概念：</p>
+<ol>
+<li>表示 —— 将数据映射到图形元素</li>
+<li>安排 —— 安排数据项的顺序，使得更容易理解</li>
+<li>选择 —— 删除或不突出某些对象和属性</li>
+</ol>
+<p>技术</p>
+<ul>
+<li><p><strong>茎叶图：</strong> 将数按位数进行比较，把高位作为主干，地位作为分枝叶。</p>
+</li>
+<li><p><strong>直方图：</strong> 用于显示单个变量值的分布，高度表示对象数。</p>
+<p>二维直方图： 每个属性划分区间，两个区间集可以定义值的二维长方体。</p>
+</li>
+<li><p><strong>盒状图：</strong> 盒的下端和上端指示百分位数25%和75%，盒中的线指示50%，底部和顶部的边缘线指示10%和90%，离群值用“+”显示。</p>
+</li>
+<li><p>饼图：类似于直方图，但通常用于具有相对较少的值的分类属性。</p>
+</li>
+<li><p>经验累积分布函数和百分位数图： 显示点小于该值的概率。</p>
+</li>
+<li><p>散步图： 二维散步图适用xy坐标，数据对象用点在平面上表示，可以用大小、颜色、形状等来表示附加的属性。</p>
+</li>
+<li><p>等高线图</p>
+</li>
+<li><p>矩阵</p>
+</li>
+<li><p>平行坐标系</p>
+</li>
+<li><p>星形坐标</p>
+</li>
+<li><p>Chernoff脸</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202209141035761.png" alt="image-20220914103515241"></p>
+<h2 id="4、关联分析"><a href="#4、关联分析" class="headerlink" title="4、关联分析"></a>4、关联分析</h2><h3 id="基本概念与算法"><a href="#基本概念与算法" class="headerlink" title="基本概念与算法"></a>基本概念与算法</h3><p>定义：关联分析用于<strong>发现大型数据集中的联系</strong>； 所发现的模式常用<strong>关联规则</strong>或<strong>频繁项集</strong>的形式表示。</p>
+<ul>
+<li><p>项集 —— 包含若干项的集合</p>
+<p>k-项集 —— 包含k个项的集合</p>
+</li>
+<li><p>支持度计数  ：包含特定项集的事务个数。<br>$$<br>\sigma()<br>$$</p>
+</li>
+<li><p>支持度  ：包含项集的事务数与总事务数的比值。<br>$$<br>s()<br>$$</p>
+</li>
+<li><p>频繁项集：满足最小支持度阈值的所有项集。</p>
+</li>
+<li><p>关联规则： 是指 X —&gt; Y 的蕴含表达式。如{milk, diaper} —&gt; {beer}</p>
+<p>关联规则强度：</p>
+<ul>
+<li><p>支持度 Support，s ：项集出现的频繁程度。</p>
+</li>
+<li><p>置信度 Confidence，c：Y在包含X的事务中出现的频繁程度。</p>
+<p>如：<br>$$<br>{milk,diaper}　—&gt;beer<br>$$</p>
+<p>$$<br>s&#x3D;\frac{\sigma(milk,diaper,beer)}{总项集数}<br>$$</p>
+<p>$$<br>c&#x3D;\frac{\sigma(milk,diaper,beet)}{\sigma(milk,diaper)}<br>$$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="6、回归分析"><a href="#6、回归分析" class="headerlink" title="6、回归分析"></a>6、回归分析</h2><h2 id="7、分类算法：决策树"><a href="#7、分类算法：决策树" class="headerlink" title="7、分类算法：决策树"></a>7、分类算法：决策树</h2><h2 id="8、模型的评估"><a href="#8、模型的评估" class="headerlink" title="8、模型的评估"></a>8、模型的评估</h2><h2 id="9、分类算法：人工神经网络"><a href="#9、分类算法：人工神经网络" class="headerlink" title="9、分类算法：人工神经网络"></a>9、分类算法：人工神经网络</h2><h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>作业1</p>
+<ol>
+<li><p>什么是数据挖掘？</p>
+<p>数据挖掘是在大型数据存储库中，自动发现有用信息的过程。它是综合了统计学、最优化、机器学习、以及数据库的一门现代计算机技术，旨在发现海量数据中的模型与模式。</p>
+</li>
+<li><p>数据挖掘的主要流程：</p>
+<p>业务理解、数据获取、数据预处理、数据建模、模型评估、模型部署</p>
+</li>
+<li><p>数据挖掘的任务有哪几类？</p>
+<p>一般分为两类：预测任务和描述任务。</p>
+<p>其中，预测任务包含：关联分析（关联规则发现，序列模式发现），聚类；  描述任务包含：预测建模（分类，回归），异常&#x2F;偏差检测</p>
+</li>
+<li><p>查阅资料，了解数据挖掘的现实应用。围绕一个案例，撰写一份简要的报告，内容主要包括：</p>
+<p>1）领域背景</p>
+<p>2）问题</p>
+<p>3）数据挖掘方法</p>
+<p>4）效果</p>
+<p>糖尿病是世界上一种常见的疾病，全世界的糖尿病患者高达5亿。糖尿病的临床诊断往往是从身体症状和化验值异常着手的。有些异常指标包括身体质量指数（ BMI ），血压（ BP ）指数等。</p>
+<p>利用聚类分析工具可以分析患者的疾病诊断数据，以进行探索性的数据分析，并考察产生的聚类结果的意义。至于糖尿病患者的数据，聚类分析工具试图按照年龄、种族、性别、体重指数和BP指数等产生聚类模式，并将数据划分到相应的自然组群中。</p>
+<p>通过聚类分析，专家们在所有3个数据集中共得到4种类型的患者：</p>
+<ol>
+<li>患者为肥胖（体重指数&gt; 56 ），但血压正常；</li>
+<li>患者基本指标（BMI，BP）是正常的 ；</li>
+<li>患者血压在正常范围内，但体重指标异常 ；</li>
+<li>患者基本指数（BMI，BP）异常 ；</li>
+</ol>
+<p>以上4种糖尿病的聚类结果揭示了糖尿病患者典型的四个分型，在临床上具有重要意义。</p>
+</li>
+</ol>
+<h1 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h1><h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><ol start="2">
+<li><p>什么是软件测试？软件测试的基本原则是什么？</p>
+<p>软件测试是为了发现错误而针对某个程序或系统的执行过程。即软件测试是以寻找系统中存在的错误为目的的。</p>
+<p>基本原则：</p>
+<ol>
+<li>测试不是为了证明系统的正确性，而是为了证明系统存在缺陷。</li>
+<li>所有的测试都应该追溯到用户的需求。</li>
+<li>测试应当尽早开始和不断进行。</li>
+<li>穷举测试是不可能的。（因为输入量太大，输出结果太多，软件执行路径太多，软件说明书是客观的）</li>
+<li>第三方测试会更客观，更有效（程序员避免测试自己的程序）</li>
+<li>pareto原则，即二八原则应用于软件测试（80%的错误 可能存在于20%的程序模块）</li>
+<li>软件测试是有风险的行为；但并非所有的测试都要修复。</li>
+<li>测试应从小规模开始，逐步转向大规模</li>
+<li>软件测试是一项讲究条理的技术专业（需要经过训练和规范的专业测试员）</li>
+</ol>
+</li>
+<li><p>什么是软件测试用例？良好的测试用例应该具有什么样的特性？</p>
+<p>测试用例就是为了某个测试点而设计的测试操作过程序列、条件、期望结果及相关数据的一个特定的集合。</p>
+<p>良好的测试用例应该具有以下三个特性：</p>
+<ol>
+<li>代表性：能代表并覆盖各种合法、不合法、边界内、越界的、极限数据或操作等。</li>
+<li>可判定性：测试执行的结果的正确性是可以判定的。</li>
+<li>可再现性：对于同样的测试用例，系统执行的结果应当相同，且相同的测试执行过程能反复操作。</li>
+</ol>
+</li>
+</ol>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><ol>
+<li><p>软件测试的基本原则是什么？</p>
+<ol>
+<li>测试不是为了证明系统的正确性，而是为了证明系统存在缺陷。</li>
+<li>所有的测试都应该追溯到用户的需求。</li>
+<li>测试应当尽早开始和不断进行。</li>
+<li>穷举测试是不可能的。（因为输入量太大，输出结果太多，软件执行路径太多，软件说明书是客观的）</li>
+<li>第三方测试会更客观，更有效（程序员避免测试自己的程序）</li>
+<li>pareto原则，即二八原则应用于软件测试（80%的错误 可能存在于20%的程序模块）</li>
+<li>软件测试是有风险的行为；但并非所有的测试都要修复。</li>
+<li>测试应从小规模开始，逐步转向大规模</li>
+<li>软件测试是一项讲究条理的技术专业（需要经过训练和规范的专业测试员）</li>
+</ol>
+</li>
+<li><p>软件测试方法怎样分类？</p>
+<ol>
+<li><p>静态测试 ：</p>
+<p>不需要执行被测软件，而是采用分析和查看的方式，来发现软件当中的缺陷，包括需求文档、源代码、设计文档，以及其他与软件相关文档中的二义性和错误。</p>
+</li>
+<li><p>动态测试：</p>
+<p>动态测试是指通过运行实际被测试软件，通过观察程序运行时所表现的状态、行为等来发现软件的缺陷。并对被测程序的运行情况进行分析对比，以便发现程序表现的行为与设计规格或客户需求不一致的地方。</p>
+</li>
+<li><p>黑盒测试：</p>
+<p>黑盒测试又称功能测试或数据驱动测试；是将被测试软件看作一个黑盒子，完全不考虑程序的内部结构和处理过程，只考虑系统的输入和输出，在程序的接口进行测试，检查系统功能是否符合需求规格说明书的要求。</p>
+</li>
+<li><p>白盒测试：</p>
+<p>白盒测试又称结构测试或逻辑驱动测试；是根据被测试程序源代码的内部结构来设计测试用例的方法。</p>
+</li>
+<li><p>灰盒测试：</p>
+<p>灰盒测试结合了白盒测试和黑盒测试的要素，关注输人的正确性，同时关注内部的表现；考虑了用户端、特定的系统知识和操作环境。它在系统组件的协同环境中评价应用软件的设计。</p>
+</li>
+<li><p>人工测试：</p>
+</li>
+<li><p>自动化测试：</p>
+</li>
+</ol>
+</li>
+<li><p>常用的软件测试过程模型有哪些？在实际测试工作中，怎样选择和使用相关模型？</p>
+<ol>
+<li>V-model</li>
+<li>W-model</li>
+<li>H-model</li>
+<li>X-model</li>
+<li>Pretest-model</li>
+</ol>
+<p>在实际的工作中，要灵活地运用各种模型的优点，在W-model的框架下，运用H-model的思想进行独立的测试，并同时将测试与开发紧密结合，寻找恰当的就绪点开始测试并反复迭代测试，最终保证按期完成预定目标。</p>
+</li>
+</ol>
+<h3 id="三"><a href="#三" class="headerlink" title="三"></a>三</h3><ol>
+<li><p>什么是白盒测试？静态白盒测试有哪些方法？</p>
+<p>白盒测试又称为结构测试或逻辑驱动测试，是针对被测试程序单元内部如何工作的测试；特点是基于被测试程序的源代码，而不是软件的需求规格说明。</p>
+<p>静态白盒测试方法有：审查，走查，检验等。</p>
+</li>
+<li><p>循环测试的基本原则是什么？常考虑测试循环的哪几种情况？</p>
+<p>基本原则：在循环的边界和运行界限执行循环体。</p>
+<p>三种情况：简单循环，串接循环，嵌套循环。</p>
+</li>
+<li><p>白盒测试的流程有几种类型？常见的白盒测试问题有哪些类型？</p>
+<p>流程有两种：</p>
+<ul>
+<li>界面对象测试 —— 界面对象-&gt;业务对象-&gt;数据管理对象-&gt;数据库</li>
+<li>业务对象测试 —— 数据库-&gt;数据管理对象-&gt;业务对象-&gt;界面对象</li>
+</ul>
+<p>问题分为：</p>
+<p>各层公用问题，Java语言规范，数据类型，SQL语句规范，界面UI，VO数值对象，BO业务对象，DMO数据管理对象，业务逻辑重点，业务处理与隔离级别测试，效率测试。</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">ValcanoZz</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/09/20/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">http://example.com/2021/09/20/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">ValcanoZz Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/Notes/tags/%E5%AD%A6%E6%A0%A1/">学校</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/Notes/2022/04/14/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"><img class="prev-cover" src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151628461.jpeg" onerror="onerror=null;src='/Notes/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C语言</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NjA4NS8zMjU0OA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">1.</span> <span class="toc-text">数据挖掘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1、概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据挖掘的任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9A%84%E4%B8%BB%E8%A6%81%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">数据挖掘的主要流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.</span> <span class="toc-text">2、数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text">数据质量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">1.2.3.</span> <span class="toc-text">数据预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E9%9B%86"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">聚集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E6%A0%B7"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">抽样</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%B4%E5%BD%92%E7%BA%A6"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">维归约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%AD%90%E9%9B%86%E9%80%89%E6%8B%A9"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">特征子集选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96%E5%92%8C%E4%BA%8C%E5%85%83%E5%8C%96"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">离散化和二元化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%8F%98%E6%8D%A2"><span class="toc-number">1.2.3.6.</span> <span class="toc-text">变量变换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%92%8C%E7%9B%B8%E5%BC%82%E6%80%A7%E5%BA%A6%E9%87%8F"><span class="toc-number">1.2.4.</span> <span class="toc-text">相似性和相异性度量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E5%BC%82%E5%BA%A6"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">数据对象之间的相异度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E4%BC%BC%E5%BA%A6"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">数据对象之间的相似度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%8E%A2%E7%B4%A2%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.</span> <span class="toc-text">3、探索数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E6%80%BB%E7%BB%9F%E8%AE%A1"><span class="toc-number">1.3.1.</span> <span class="toc-text">汇总统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">1.3.2.</span> <span class="toc-text">可视化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">4、关联分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.1.</span> <span class="toc-text">基本概念与算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90"><span class="toc-number">1.5.</span> <span class="toc-text">6、回归分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">1.6.</span> <span class="toc-text">7、分类算法：决策树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AF%84%E4%BC%B0"><span class="toc-number">1.7.</span> <span class="toc-text">8、模型的评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95%EF%BC%9A%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">1.8.</span> <span class="toc-text">9、分类算法：人工神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.9.</span> <span class="toc-text">练习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-number">2.</span> <span class="toc-text">软件测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%A0%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80"><span class="toc-number">2.1.1.</span> <span class="toc-text">一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C"><span class="toc-number">2.1.2.</span> <span class="toc-text">二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">三</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By ValcanoZz</div><div class="footer_custom_text"><div><a onclick="window.open('https://beian.miit.gov.cn/')" >粤ICP备2022110986号-1</a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/Notes/js/utils.js"></script><script src="/Notes/js/main.js"></script><script src="/Notes/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/Notes/js/search/local-search.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
