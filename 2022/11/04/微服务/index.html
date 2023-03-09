@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>微服务 | ValcanoZz Blog</title><meta name="keywords" content="java,框架,SpringCloud"><meta name="author" content="ValcanoZz"><meta name="copyright" content="ValcanoZz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="技术路线 微服务技术 1 微服务治理 —— 注册发现、远程调用、配置管理、网关路由 6 微服务保护 —— 流量控制、系统保护、熔断降级、服务授权 7 分布式事务 —— 分布式事务、TCC模型、AT模型、Seata   异步通信技术 3 异步通信 —— MQ消息模型、SpringAMQP、消息堆积问题、数据持久化 10 可靠消息服务 —— 消息可靠性、镜像集群、延迟队列、消息幂等性   缓存技术 4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务">
+<meta property="og:url" content="http://example.com/2022/11/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.html">
+<meta property="og:site_name" content="ValcanoZz Blog">
+<meta property="og:description" content="技术路线 微服务技术 1 微服务治理 —— 注册发现、远程调用、配置管理、网关路由 6 微服务保护 —— 流量控制、系统保护、熔断降级、服务授权 7 分布式事务 —— 分布式事务、TCC模型、AT模型、Seata   异步通信技术 3 异步通信 —— MQ消息模型、SpringAMQP、消息堆积问题、数据持久化 10 可靠消息服务 —— 消息可靠性、镜像集群、延迟队列、消息幂等性   缓存技术 4">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-11-04T03:09:59.000Z">
+<meta property="article:modified_time" content="2023-02-19T11:40:23.154Z">
+<meta property="article:author" content="ValcanoZz">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="SpringCloud">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/Notes/./img/favicon7.png"><link rel="canonical" href="http://example.com/2022/11/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/Notes/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/Notes/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '微服务',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-19 19:40:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="./css/v_footer.css"><link rel="stylesheet" href="./css/v_blog.css"><link rel="stylesheet" href="./css/v_cursors.css"><link rel="stylesheet" href="./css/v_opacity.css"><link rel="stylesheet" href="./css/v_scrollbar.css"><meta name="generator" content="Hexo 6.1.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/Notes/./img/avatar1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/Notes/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div><div class="data-item"><a href="/Notes/tags/"><div class="headline">标签</div><div class="length-num">14</div></a></div><div class="data-item"><a href="/Notes/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Notes/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Notes/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/Notes/about/"><i class="fa-fw fas fa- heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/Notes/">ValcanoZz Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Notes/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/Notes/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Notes/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/Notes/about/"><i class="fa-fw fas fa- heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">微服务</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-04T03:09:59.000Z" title="发表于 2022-11-04 11:09:59">2022-11-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-19T11:40:23.154Z" title="更新于 2023-02-19 19:40:23">2023-02-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/Notes/categories/javaLearn/">javaLearn</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="微服务"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h1><ul>
+<li>微服务技术<ul>
+<li>1 微服务治理 —— 注册发现、远程调用、配置管理、网关路由</li>
+<li>6 微服务保护 —— 流量控制、系统保护、熔断降级、服务授权</li>
+<li>7 分布式事务 —— 分布式事务、TCC模型、AT模型、Seata</li>
+</ul>
+</li>
+<li>异步通信技术<ul>
+<li>3 异步通信 —— MQ消息模型、SpringAMQP、消息堆积问题、数据持久化</li>
+<li>10 可靠消息服务 —— 消息可靠性、镜像集群、延迟队列、消息幂等性</li>
+</ul>
+</li>
+<li>缓存技术<ul>
+<li>4 分布式缓存 —— Redis数据结构、SpringDataRedis、缓存穿透&#x2F;雪崩…</li>
+<li>8 多级缓存  ——  OpenResty、多级缓存、缓存数据同步、Nginx本地缓存</li>
+<li>9 Redis集群 —— 数据持久、Redis主从复制、Lua脚本、Redis集群</li>
+</ul>
+</li>
+<li>搜索技术<ul>
+<li>5 分布式搜索  —— DSL语句、RestAPI、ES集群状态…</li>
+</ul>
+</li>
+<li>DevOps<ul>
+<li>2 Docker技术</li>
+</ul>
+</li>
+</ul>
+<h1 id="微服务技术"><a href="#微服务技术" class="headerlink" title="微服务技术"></a>微服务技术</h1><h2 id="微服务治理"><a href="#微服务治理" class="headerlink" title="微服务治理"></a>微服务治理</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li><p>单体结构 —— 将业务的所有功能集中在一个项目中开发，打成一个包部署。</p>
+<p>优点： 架构简单，部署成本低；</p>
+<p>缺点：耦合度高（维护困难，升级困难）。</p>
+<blockquote>
+<p>适合小型项目。例如：学生管理系统</p>
+</blockquote>
+</li>
+<li><p>分布式架构 ——  根据业务功能对系统做拆分，每个业务功能模块作为独立项目开发，称为一个服务。</p>
+<p>优点：降低服务耦合，有利于服务升级和拓展；</p>
+<p>缺点：服务调用关系复杂。</p>
+<blockquote>
+<p>适合大型互联网项目，例如：京东、淘宝</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202211041514729.png" alt="image-20221104151427053"></p>
+</li>
+</ul>
+<hr>
+<p>对于分布式架构，人们制定一套行之有效的标准来约束，其中<strong>微服务</strong>就是一种经过良好架构设计的<strong>分布式架构方案</strong> 。、</p>
+<ul>
+<li><p>优点：拆分粒度更小、服务更独立、耦合度更低</p>
+</li>
+<li><p>缺点：架构非常复杂，运维、监控、部署难度提高</p>
+</li>
+</ul>
+<p>微服务的架构特征：</p>
+<ul>
+<li>单一职责：微服务拆分粒度更小，每一个服务都对应唯一的业务能力，做到单一职责</li>
+<li>自治：团队独立、技术独立、数据独立，独立部署和交付</li>
+<li>面向服务：服务提供统一标准的接口，与语言和技术无关</li>
+<li>隔离性强：服务调用做好隔离、容错、降级，避免出现级联问题</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202211041514324.png" alt="image-20221104151439727"></p>
+<hr>
+<p>SpringCloud —— 是目前国内使用最广泛的微服务框架。</p>
+<p>SpringCloud集成了各种微服务功能组件，并基于SpringBoot实现了这些组件的自动装配，从而提供了良好的开箱即用体验。</p>
+<p>常见组件有：</p>
+<ul>
+<li>服务注册发现： Eureka，Nacos，Consul</li>
+<li>服务远程调用：OpenFeign，Dubbo</li>
+<li>服务链路监控：Zipkin，Sleuth</li>
+<li>统一配置管理：SpringCloudConfig，Nacos</li>
+<li>统一网关路由：SpringCloudGateway，Zuul</li>
+<li>流量控制，降级，保护：Hystix，Sentinel</li>
+</ul>
+<blockquote>
+<p>SpringCloud底层是依赖于SpringBoot的，并且有版本的兼容关系。</p>
+<p>如：版本是 Hoxton.SR10，对应的SpringBoot版本是2.3.x 。</p>
+</blockquote>
+<h3 id="服务拆分和远程调用"><a href="#服务拆分和远程调用" class="headerlink" title="服务拆分和远程调用"></a>服务拆分和远程调用</h3><p>微服务拆分时的几个原则：</p>
+<ul>
+<li>不同微服务，不要重复开发相同业务（如订单业务就不要去查用户和商品信息）；</li>
+<li>微服务的数据库各自独立，不要访问其它微服务的数据库；</li>
+<li>微服务可以将自己的业务暴露为接口，供其它微服务调用；</li>
+</ul>
+<h3 id="Eureka注册中心"><a href="#Eureka注册中心" class="headerlink" title="Eureka注册中心"></a>Eureka注册中心</h3><h3 id="Ribbon负载均衡"><a href="#Ribbon负载均衡" class="headerlink" title="Ribbon负载均衡"></a>Ribbon负载均衡</h3><h3 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h3><h4 id="Nacos注册中心"><a href="#Nacos注册中心" class="headerlink" title="Nacos注册中心"></a>Nacos注册中心</h4><h4 id="Nacos配置管理"><a href="#Nacos配置管理" class="headerlink" title="Nacos配置管理"></a>Nacos配置管理</h4><h3 id="Feign远程调用"><a href="#Feign远程调用" class="headerlink" title="Feign远程调用"></a>Feign远程调用</h3><h3 id="Gateway服务网关"><a href="#Gateway服务网关" class="headerlink" title="Gateway服务网关"></a>Gateway服务网关</h3><h2 id="微服务保护"><a href="#微服务保护" class="headerlink" title="微服务保护"></a>微服务保护</h2><h3 id="Sentinel"><a href="#Sentinel" class="headerlink" title="Sentinel"></a>Sentinel</h3><h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><h3 id="隔离和降级"><a href="#隔离和降级" class="headerlink" title="隔离和降级"></a>隔离和降级</h3><h3 id="授权规则"><a href="#授权规则" class="headerlink" title="授权规则"></a>授权规则</h3><h3 id="规则持久化"><a href="#规则持久化" class="headerlink" title="规则持久化"></a>规则持久化</h3><h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><h1 id="异步通信技术"><a href="#异步通信技术" class="headerlink" title="异步通信技术"></a>异步通信技术</h1><h2 id="异步通信"><a href="#异步通信" class="headerlink" title="异步通信"></a>异步通信</h2><h3 id="MQ概述"><a href="#MQ概述" class="headerlink" title="MQ概述"></a>MQ概述</h3><h3 id="SpringAMQP"><a href="#SpringAMQP" class="headerlink" title="SpringAMQP"></a>SpringAMQP</h3><h2 id="可靠消息服务"><a href="#可靠消息服务" class="headerlink" title="可靠消息服务"></a>可靠消息服务</h2><h1 id="搜索技术"><a href="#搜索技术" class="headerlink" title="搜索技术"></a>搜索技术</h1><h2 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h2><h1 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h1><h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>开启docker： systemctl start docker</p>
+<p>镜像操作</p>
+<ul>
+<li><p>拉取镜像 —— docker pull 镜像名称:版本号</p>
+</li>
+<li><p>查看拉取到的镜像 —— docker images</p>
+</li>
+<li><p>保存镜像 —— docker save -o 要存放的文件名称  镜像名称</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save -o nginx.tar nginx:latest</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载镜像 ——  docker load -i  保存了镜像的文件名称</p>
+</li>
+<li><p>删除本地镜像 —— docker rmi  镜像名:版本号</p>
+</li>
+</ul>
+<p>容器操作</p>
+<ul>
+<li><p>创建并运行容器 —— docker run</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name 容器名 -p 80:80 -d nginx:latest</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>暂停容器 —— docker pause 容器名</p>
+</li>
+<li><p>被暂停的容器恢复运行 —— docker unpause 容器名</p>
+</li>
+<li><p>停止容器 —— docker stop 容器名</p>
+</li>
+<li><p>重启容器 —— docker start 容器名</p>
+</li>
+<li><p>删除容器 —— docker rm 容器名</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">ValcanoZz</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">http://example.com/2022/11/04/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">ValcanoZz Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/Notes/tags/java/">java</a><a class="post-meta__tags" href="/Notes/tags/%E6%A1%86%E6%9E%B6/">框架</a><a class="post-meta__tags" href="/Notes/tags/SpringCloud/">SpringCloud</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Notes/2022/11/22/Git/"><img class="prev-cover" src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151628018.png" onerror="onerror=null;src='/Notes/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">git</div></div></a></div><div class="next-post pull-right"><a href="/Notes/2022/09/24/Redis%E5%AD%A6%E4%B9%A0/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/Notes/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Redis学习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Notes/2022/05/13/Java%E2%80%94SpringBoot-MybatisPlus/" title="Java—SpringBoot&MybatisPlus"><img class="cover" src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205232143584.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-13</div><div class="title">Java—SpringBoot&MybatisPlus</div></div></a></div><div><a href="/Notes/2022/04/14/Java%E2%80%94SSM&Maven/" title="Java—SSM&Maven"><img class="cover" src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151630621.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-14</div><div class="title">Java—SSM&Maven</div></div></a></div><div><a href="/Notes/2022/05/01/JVM/" title="JVM"><img class="cover" src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151632260.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-01</div><div class="title">JVM</div></div></a></div><div><a href="/Notes/2022/04/14/Java/" title="java"><img class="cover" src="https://raw.githubusercontent.com/ValcanoZz/Notes_image/main/img/202205151629165.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-14</div><div class="title">java</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NjA4NS8zMjU0OA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF"><span class="toc-number">1.</span> <span class="toc-text">技术路线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8A%80%E6%9C%AF"><span class="toc-number">2.</span> <span class="toc-text">微服务技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">微服务治理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86%E5%92%8C%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">服务拆分和远程调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eureka%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83"><span class="toc-number">2.1.3.</span> <span class="toc-text">Eureka注册中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ribbon%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">2.1.4.</span> <span class="toc-text">Ribbon负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nacos"><span class="toc-number">2.1.5.</span> <span class="toc-text">Nacos</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Nacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83"><span class="toc-number">2.1.5.1.</span> <span class="toc-text">Nacos注册中心</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nacos%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-number">2.1.5.2.</span> <span class="toc-text">Nacos配置管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Feign%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8"><span class="toc-number">2.1.6.</span> <span class="toc-text">Feign远程调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gateway%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3"><span class="toc-number">2.1.7.</span> <span class="toc-text">Gateway服务网关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BF%9D%E6%8A%A4"><span class="toc-number">2.2.</span> <span class="toc-text">微服务保护</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sentinel"><span class="toc-number">2.2.1.</span> <span class="toc-text">Sentinel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-number">2.2.2.</span> <span class="toc-text">流量控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%94%E7%A6%BB%E5%92%8C%E9%99%8D%E7%BA%A7"><span class="toc-number">2.2.3.</span> <span class="toc-text">隔离和降级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E8%A7%84%E5%88%99"><span class="toc-number">2.2.4.</span> <span class="toc-text">授权规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">2.2.5.</span> <span class="toc-text">规则持久化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-number">2.3.</span> <span class="toc-text">分布式事务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF"><span class="toc-number">3.</span> <span class="toc-text">异步通信技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1"><span class="toc-number">3.1.</span> <span class="toc-text">异步通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MQ%E6%A6%82%E8%BF%B0"><span class="toc-number">3.1.1.</span> <span class="toc-text">MQ概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringAMQP"><span class="toc-number">3.1.2.</span> <span class="toc-text">SpringAMQP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%B6%88%E6%81%AF%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.2.</span> <span class="toc-text">可靠消息服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%8A%80%E6%9C%AF"><span class="toc-number">4.</span> <span class="toc-text">搜索技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ElasticSearch"><span class="toc-number">4.1.</span> <span class="toc-text">ElasticSearch</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DevOps"><span class="toc-number">5.</span> <span class="toc-text">DevOps</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker"><span class="toc-number">5.1.</span> <span class="toc-text">Docker</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By ValcanoZz</div><div class="footer_custom_text"><div><a onclick="window.open('https://beian.miit.gov.cn/#/Integrated/index')" >粤ICP备2022110986号-1</a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/Notes/js/utils.js"></script><script src="/Notes/js/main.js"></script><script src="/Notes/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/Notes/js/search/local-search.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
