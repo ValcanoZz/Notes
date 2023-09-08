@@ -1093,7 +1093,7 @@
 <p>官方文档地址：<code> https://vant-contrib.gitee.io/vant-weapp/0.x/#/intro</code></p>
 <p>安装Vant组件库：</p>
 <ol>
-<li><p>通过npm安装：npm i @vant&#x2F;<a href="mailto:&#x77;&#x65;&#x61;&#x70;&#112;&#64;&#49;&#46;&#51;&#x2e;&#51;">&#x77;&#x65;&#x61;&#x70;&#112;&#64;&#49;&#46;&#51;&#x2e;&#51;</a> -S –production</p>
+<li><p>通过npm安装：npm i @vant&#x2F;<a href="mailto:&#119;&#101;&#97;&#112;&#112;&#64;&#x31;&#x2e;&#x33;&#x2e;&#x33;">&#119;&#101;&#97;&#112;&#112;&#64;&#x31;&#x2e;&#x33;&#x2e;&#x33;</a> -S –production</p>
 <blockquote>
 <p>需要先使用 npm init -y 初始化一个包管理配置文件package.json</p>
 </blockquote>
@@ -1119,7 +1119,7 @@
 <p>API Promise化，指的是通过额外的配置，将官方提供的异步API，升级为基于Promise的异步API。</p>
 <p>实现：</p>
 <ol>
-<li><p>安装：npm install –save <a href="mailto:&#109;&#105;&#110;&#x69;&#x70;&#x72;&#111;&#x67;&#114;&#x61;&#x6d;&#x2d;&#97;&#x70;&#105;&#45;&#112;&#x72;&#111;&#x6d;&#105;&#115;&#x65;&#x40;&#49;&#x2e;&#48;&#x2e;&#x34;">&#109;&#105;&#110;&#x69;&#x70;&#x72;&#111;&#x67;&#114;&#x61;&#x6d;&#x2d;&#97;&#x70;&#105;&#45;&#112;&#x72;&#111;&#x6d;&#105;&#115;&#x65;&#x40;&#49;&#x2e;&#48;&#x2e;&#x34;</a></p>
+<li><p>安装：npm install –save <a href="mailto:&#109;&#x69;&#110;&#x69;&#112;&#x72;&#111;&#103;&#x72;&#x61;&#109;&#x2d;&#97;&#x70;&#105;&#45;&#112;&#114;&#111;&#109;&#x69;&#x73;&#101;&#x40;&#49;&#x2e;&#48;&#46;&#x34;">&#109;&#x69;&#110;&#x69;&#112;&#x72;&#111;&#103;&#x72;&#x61;&#109;&#x2d;&#97;&#x70;&#105;&#45;&#112;&#114;&#111;&#109;&#x69;&#x73;&#101;&#x40;&#49;&#x2e;&#48;&#46;&#x34;</a></p>
 </li>
 <li><p>使用：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在小程序的入口文件(app.js)中，只需调用一次promisifyAll()方法，即可实现异步API的Promise化</span></span><br><span class="line"><span class="keyword">import</span> &#123; promisifyAll &#125; <span class="keyword">from</span> <span class="string">&#x27;minigrogram-api-promise&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> wxp = wx.<span class="property">p</span> = &#123;&#125;</span><br><span class="line"><span class="title function_">promisifyAll</span>(wx, wxp)</span><br></pre></td></tr></table></figure>
